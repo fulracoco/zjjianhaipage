@@ -1,4 +1,4 @@
-window.JIANHAI_I18N = {
+const messages = {
     zh: {
       title: '镇江舰海船舶配件有限公司 | Marine Engine Valves & Valve Seats',
       description: '镇江舰海船舶配件有限公司专业生产船用发动机进排气阀、阀座、阀杆，覆盖淄柴、潍柴、MAN B&W、Wartsila、Daihatsu、Mitsubishi等主流机型。',
@@ -300,3 +300,5 @@ window.JIANHAI_I18N = {
       footer_company: 'Zhenjiang Jianhai Marine Parts Co., Ltd.'
     }
   };
+
+export default messages;
