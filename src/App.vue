@@ -10,6 +10,7 @@ import EngineSection from './components/EngineSection.vue';
 const { language, t } = useSiteI18n();
 
 const highlights = ['about_highlight_1', 'about_highlight_2', 'about_highlight_3', 'about_highlight_4'];
+const aboutParagraphs = ['about_body_1', 'about_body_2', 'about_body_3'];
 const aboutStats = [
   ['ISO 9001', 'stat_iso'], ['10+', 'stat_brands'], ['100+', 'stat_models'], ['stat_stock_title', 'stat_stock']
 ];
@@ -60,12 +61,7 @@ onMounted(() => {
       <div class="about-grid"><div class="about-text">
         <h3>{{ t('about_company') }}</h3><p class="en-title">Zhenjiang Jianhai Marine Parts Co., Ltd.</p>
         <div class="about-photo"><img :src="assets.factory" alt="Zhenjiang Jianhai Marine Parts factory" width="893" height="385" loading="lazy" decoding="async"></div>
-        <p class="zh-copy">镇江舰海船舶配件有限公司是一家集<strong>研发、生产、销售、服务</strong>于一体的专业船舶制造、水上运输设备零配件销售的制造企业。公司深耕船舶动力发动机领域，依托专业技术团队、精密制造设备、严格质量管控与完善供应链体系，为国内外航运企业、造船厂、船舶维修厂、发动机主机厂提供原厂品质、高性价比的柴油机配件与解决方案。</p>
-        <p class="en-text alternate-lang">Zhenjiang Jianhai Marine Parts Co., Ltd. is a professional shipbuilding and marine transportation equipment parts manufacturing enterprise that integrates <strong>R&D, production, sales, and services</strong>. Specializing in marine power engines, the company provides original-quality, high-value diesel engine parts and solutions to shipyards, repair facilities, shipping companies, and engine manufacturers.</p>
-        <p class="zh-copy">主营产品包括<strong>淄柴、潍柴</strong>等主流船用发动机阀门，中速机阀门以及低速机阀门等。产品均通过<strong>ISO 9001质量管理体系认证</strong>，关键零部件经过严格的性能测试与疲劳试验，确保与原厂主机完美匹配。公司坚持以高品质、快交付、优服务为宗旨，为船舶企业、造船厂、船东及维修单位提供一站式动力配套解决方案。</p>
-        <p class="en-text alternate-lang"><strong>Main products:</strong> marine engine valves for Zichai, Weichai and other mainstream brands, including medium-speed and low-speed engine valves. Key components undergo rigorous performance and fatigue testing to support OEM-level compatibility.</p>
-        <p class="zh-copy">船用发动机进排气阀是柴油机配气机构的核心部件，主要负责控制气缸<strong>进气→压缩→做功→排气</strong>四个工作过程，直接影响发动机动力性、经济性与可靠性。公司产品采用高强度耐热合金精密锻造加工，具备优异的高温强度、抗氧化性、耐腐蚀性与耐磨性。</p>
-        <p class="en-text alternate-lang">Marine engine intake and exhaust valves are core diesel engine valve-train components, controlling the <strong>intake → compression → power → exhaust</strong> cycle. Precision-forged heat-resistant alloys provide high-temperature strength, oxidation resistance, corrosion resistance, and wear resistance.</p>
+        <p v-for="paragraph in aboutParagraphs" :key="paragraph" v-html="t(paragraph)"></p>
         <div class="about-features"><h4>{{ t('about_features_title') }}</h4><div class="about-highlights"><div v-for="highlight in highlights" :key="highlight" class="highlight-item"><span class="dot"></span><span>{{ t(highlight) }}</span></div></div></div>
       </div></div>
       <div class="about-stats"><div v-for="[number, label] in aboutStats" :key="label" class="stat-card"><div class="stat-number">{{ number.startsWith('stat_') ? t(number) : number }}</div><div class="stat-label">{{ t(label) }}</div></div></div>

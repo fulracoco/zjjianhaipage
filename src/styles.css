@@ -60,7 +60,7 @@
   }
   .lang-switch button {
     border:0; background:transparent; color:rgba(255,255,255,.78); cursor:pointer;
-    border-radius:999px; padding:.28rem .58rem; font:600 .78rem/1 inherit;
+    border-radius:999px; min-width:32px; height:26px; padding:0 .4rem; font:600 .78rem/1 inherit;
   }
   .lang-switch button.active { background:var(--accent); color:var(--primary); }
   .nav-toggle { display:none; background:none; border:none; color:var(--white); font-size:1.5rem; cursor:pointer; }
@@ -131,13 +131,9 @@
   .about-text h3 { font-size: 1.55rem; color: var(--primary); margin-bottom: .25rem; }
   .about-text .en-title { font-size: .9rem; color: var(--accent); font-style: italic; margin-bottom: 1rem; letter-spacing: .5px; }
   .about-text p { color: var(--text-light); margin-bottom: .9rem; font-size: .98rem; line-height: 1.9; }
-  .about-text p.en-text { color: #888; font-size: .9rem; font-style: italic; line-height: 1.75; padding-left: 1rem; border-left: 2px solid var(--border); margin-bottom: 1.2rem; }
-  html[data-lang="zh"] .alternate-lang { display:none; }
-  html[data-lang="en"] .zh-copy { display:none; }
-  html[data-lang="en"] .alternate-lang { display:block; color:var(--text-light); font-style:normal; font-size:.98rem; border-left:0; padding-left:0; }
-  html[data-lang="en"] .product-detail > img,
-  html[data-lang="en"] #process img.manufacturing-photo,
-  html[data-lang="en"] #production img {
+  html:not([data-lang="zh"]) .product-detail > img,
+  html:not([data-lang="zh"]) #process img.manufacturing-photo,
+  html:not([data-lang="zh"]) #production img {
     max-height: none;
     object-fit: contain;
     object-position: center;
@@ -331,6 +327,7 @@
     .nav-links.open { display:flex; }
     .nav-toggle { display:block; }
     .cert-detail .info-row { flex-direction:column; gap:.5rem; }
+    .cert-detail .info-row span { white-space:normal; overflow-wrap:anywhere; }
   }
   @media (hover: none), (max-width: 900px) {
     .eng-preview::before, .eng-preview::after { display:none; }
@@ -340,13 +337,15 @@
     html { scroll-padding-top: 72px; }
     .section { padding: 3.5rem 1.25rem; }
     .section-header { margin-bottom: 2.25rem; }
-    .about-stats { grid-template-columns: 1fr 1fr; }
+    .about-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stat-card { min-width:0; }
+    .stat-number { overflow-wrap:anywhere; }
     .about-features { padding: 1rem; }
     .spec-table { font-size: .75rem; }
     .spec-table th, .spec-table td { padding: .4rem .5rem; }
     .nav-inner { padding: 0 .75rem; }
     .nav-actions { gap:.35rem; }
-    .lang-switch button { padding:.24rem .46rem; font-size:.72rem; }
+    .lang-switch button { min-width:28px; height:24px; padding:0; font-size:.72rem; }
     .hero h1 { font-size: 1.5rem; line-height:1.3; word-break: break-all; }
     .hero h1 .en { font-size:.75rem; letter-spacing:1px; }
     .hero-desc { font-size:.95rem; line-height:1.8; }
@@ -356,7 +355,7 @@
     .hero-proof { grid-template-columns:1fr; max-width:100%; gap:.65rem; }
     .nav-logo { gap:.45rem; }
     .nav-logo .icon { width:36px; height:36px; min-width:36px; }
-    .nav-logo .text { max-width: 128px; overflow:hidden; text-overflow:ellipsis; }
+    .nav-logo .text { display:none; }
     .btn { width:100%; justify-content:center; }
   }
 

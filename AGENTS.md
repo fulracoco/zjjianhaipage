@@ -13,7 +13,7 @@ This repository contains the bilingual marketing site for Zhenjiang Jianhai Mari
 - `src/composables/useSiteI18n.js` manages the active language, document metadata, URL language selection, and `localStorage` persistence.
 - `src/data/assets.js` is the central image registry.
 - `src/styles.css` contains global design tokens, component styles, language-specific rules, and responsive breakpoints.
-- `i18n.js` exports the synchronized Chinese (`zh`) and English (`en`) dictionaries.
+- `i18n.js` exports synchronized Chinese (`zh`), English (`en`), Japanese (`ja`), and Korean (`ko`) dictionaries.
 - `assets/` contains production images.
 - `404.html` is a standalone error page outside the Vue application.
 - `_headers`, `_redirects`, `robots.txt`, and `sitemap.xml` control deployment, caching, security, redirects, and indexing.
@@ -38,6 +38,16 @@ npm run preview
 
 Use Node.js 20.19+ or 22.12+ for Vite 7 compatibility. There is currently no linter or automated test suite.
 
+## Execution Autonomy
+
+- When a task is requested, inspect the relevant files and execute the work directly without asking for confirmation or presenting a plan first.
+- Treat implementation, modification, debugging, bug-fixing, refactoring, and verification requests as authorization to inspect, edit, run commands, and test the result immediately.
+- When debugging reveals an in-scope defect, apply and verify the fix directly unless the user explicitly requested diagnosis or review only.
+- Make reasonable, repository-aligned assumptions for unspecified implementation details and carry the task through editing, verification, and completion.
+- Do not pause to ask whether to proceed, and do not ask for approval before routine local operations such as reading files, editing source, running builds, starting local development services, or performing non-destructive checks.
+- Ask a question only when essential information cannot be discovered locally and making an assumption would create a material risk of data loss, an irreversible external side effect, or a result that clearly diverges from the request.
+- Preserve unrelated user changes in a dirty worktree and work with overlapping edits rather than reverting them.
+
 ## Code Style and Scope
 
 - Follow the existing Vue Single-File Component and Composition API patterns.
@@ -52,12 +62,13 @@ Use Node.js 20.19+ or 22.12+ for Vite 7 compatibility. There is currently no lin
 
 ## Internationalization Rules
 
-- Keep the `zh` and `en` objects in `i18n.js` synchronized whenever a translation key is added, renamed, or removed.
+- Keep the `zh`, `en`, `ja`, and `ko` objects in `i18n.js` synchronized whenever a translation key is added, renamed, or removed.
 - Use the existing `t` function for translated interface content.
 - Preserve the fallback behavior to Chinese for missing keys.
-- Check both `?lang=zh` and `?lang=en`, as well as the `jianhai_language` value stored in `localStorage`.
-- When changing titles or descriptions, verify that the document title and description metadata update in both languages.
-- Some long-form company copy is rendered with `.zh-copy` and `.alternate-lang`; preserve the matching language visibility rules when editing it.
+- Check `?lang=zh`, `?lang=en`, `?lang=ja`, and `?lang=ko`, as well as the `jianhai_language` value stored in `localStorage`.
+- Preserve the initial-language priority: URL override, stored user choice, then browser detection. Detect `zh`, `ja`, and `ko` explicitly and default all other browser languages to English.
+- When changing titles or descriptions, verify that the document title and description metadata update in all four languages.
+- Keep the translated long-form company copy in the `about_body_*` dictionary keys rather than hard-coding language-specific paragraphs in `App.vue`.
 - Content passed through `v-html` must remain trusted, repository-owned text. Do not pass user-controlled values to `v-html`.
 
 ## Build and Deployment Rules
@@ -74,7 +85,7 @@ Use Node.js 20.19+ or 22.12+ for Vite 7 compatibility. There is currently no lin
 
 Every UI or content change requires browser verification at desktop and narrow mobile widths. Check:
 
-- Chinese and English rendering
+- Chinese, English, Japanese, and Korean rendering
 - Header scrolling state and anchor navigation
 - Mobile menu open, close, and link behavior
 - Language switching, URL overrides, and persistence after reload

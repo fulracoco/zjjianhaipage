@@ -2,6 +2,7 @@ import { computed, ref, watch } from 'vue';
 import messages from '../../i18n.js';
 
 const storageKey = 'jianhai_language';
+const supportedLanguages = ['zh', 'en', 'ja', 'ko'];
 const requestedLanguage = new URLSearchParams(window.location.search).get('lang');
 const storedLanguage = (() => {
   try {
@@ -11,15 +12,20 @@ const storedLanguage = (() => {
   }
 })();
 
-const initialLanguage = ['zh', 'en'].includes(requestedLanguage)
+const browserLanguage = window.navigator.languages?.[0] ?? window.navigator.language ?? '';
+const browserLanguageCode = browserLanguage.toLowerCase().split(/[-_]/)[0];
+const detectedLanguage = supportedLanguages.includes(browserLanguageCode) ? browserLanguageCode : 'en';
+
+const initialLanguage = supportedLanguages.includes(requestedLanguage)
   ? requestedLanguage
-  : ['zh', 'en'].includes(storedLanguage) ? storedLanguage : 'zh';
+  : supportedLanguages.includes(storedLanguage) ? storedLanguage : detectedLanguage;
 
 const language = ref(initialLanguage);
 
 function updateDocument(languageCode) {
   const dictionary = messages[languageCode] ?? messages.zh;
-  document.documentElement.lang = languageCode === 'en' ? 'en' : 'zh-CN';
+  const documentLanguages = { zh: 'zh-CN', en: 'en', ja: 'ja', ko: 'ko' };
+  document.documentElement.lang = documentLanguages[languageCode] ?? 'en';
   document.documentElement.dataset.lang = languageCode;
   document.title = dictionary.title;
   document.querySelector('meta[name="description"]')?.setAttribute('content', dictionary.description);

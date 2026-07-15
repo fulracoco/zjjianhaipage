@@ -9,6 +9,12 @@ defineProps({
 const emit = defineEmits(['change-language']);
 const menuOpen = ref(false);
 const scrolled = ref(false);
+const languageOptions = [
+  ['zh', '中', '中文'],
+  ['en', 'EN', 'English'],
+  ['ja', '日', '日本語'],
+  ['ko', '한', '한국어']
+];
 const navItems = [
   ['about', 'nav_about'],
   ['products', 'nav_products'],
@@ -40,8 +46,16 @@ onBeforeUnmount(() => window.removeEventListener('scroll', updateScrollState));
           </li>
         </ul>
         <div class="lang-switch" aria-label="Language switch">
-          <button type="button" :class="{ active: language === 'zh' }" :aria-pressed="language === 'zh'" @click="emit('change-language', 'zh')">{{ language === 'en' ? 'ZH' : '中文' }}</button>
-          <button type="button" :class="{ active: language === 'en' }" :aria-pressed="language === 'en'" @click="emit('change-language', 'en')">EN</button>
+          <button
+            v-for="[code, label, name] in languageOptions"
+            :key="code"
+            type="button"
+            :class="{ active: language === code }"
+            :aria-label="name"
+            :aria-pressed="language === code"
+            :title="name"
+            @click="emit('change-language', code)"
+          >{{ label }}</button>
         </div>
         <button class="nav-toggle" type="button" :aria-label="menuOpen ? 'Close menu' : 'Open menu'" :aria-expanded="menuOpen" @click="menuOpen = !menuOpen">☰</button>
       </div>
