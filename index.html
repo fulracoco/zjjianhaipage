@@ -151,9 +151,13 @@
   html[data-lang="en"] .zh-copy { display:none; }
   html[data-lang="en"] .alternate-lang { display:block; color:var(--text-light); font-style:normal; font-size:.98rem; border-left:0; padding-left:0; }
   html[data-lang="en"] .hero { background-image: url("asserts/factory.png"); background-size: auto 170%; background-position: center 82%; }
-  html[data-lang="en"] .product-detail > img { object-fit: contain; object-position: center; }
-  html[data-lang="en"] #process img,
-  html[data-lang="en"] #production img { max-height: 420px; object-fit: cover; object-position: center; }
+  html[data-lang="en"] .product-detail > img,
+  html[data-lang="en"] #process img.manufacturing-photo,
+  html[data-lang="en"] #production img {
+    max-height: none;
+    object-fit: contain;
+    object-position: center;
+  }
   .about-photo { grid-column:2; grid-row:3 / span 4; margin: 0 0 1.25rem; position:sticky; top:92px; }
   .about-photo img { width: 100%; aspect-ratio: 4 / 3; max-height: 430px; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow-lg); display: block; }
   .about-features {
