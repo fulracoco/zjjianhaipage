@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip list *)",
+      "Bash(python3 *)",
+      "PowerShell(pip install *)",
+      "mcp__ide__executeCode",
+      "PowerShell(python -c \"import PyPDF2; reader = PyPDF2.PdfReader\\('镇江舰海船舶配件有限公司.pdf'\\); print\\('Pages:', len\\(reader.pages\\)\\); [print\\(f'=== Page {i+1} ===', page.extract_text\\(\\)[:2000] if page.extract_text\\(\\) else 'NO TEXT'\\) for i, page in enumerate\\(reader.pages[:10]\\)]\")",
+      "PowerShell(python extract_pdf.py 2>&1)",
+      "Bash(npm install *)",
+      "Bash(node -e ' *)",
+      "PowerShell(python extract_images.py 2>&1)",
+      "Bash(node extract_pdf_images.js)",
+      "Bash(node extract_pdf_v2.js)",
+      "Bash(npm init *)",
+      "Bash(node ocr_pages.js)",
+      "Bash(node crop_images.js)"
+    ]
+  }
+}
