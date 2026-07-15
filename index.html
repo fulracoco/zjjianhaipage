@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>镇江舰海船舶配件有限公司 | Marine Engine Valves & Valve Seats</title>
-<meta name="description" content="镇江舰海船舶配件有限公司专业生产船用发动机进排气阀、阀座、阀杆，覆盖淄柴、潍柴、MAN B&W、Wartsila、Daihatsu、Mitsubishi等主流机型。Zhenjiang Jianhai supplies marine engine valves, valve seats and customized diesel engine parts for global shipyards, ship owners and repair companies.">
+<meta name="description" content="镇江舰海船舶配件有限公司专业生产船用发动机进排气阀、阀座、阀杆，覆盖淄柴、潍柴、MAN B&W、Wartsila、Daihatsu、Mitsubishi等主流机型。Zhenjiang Jianhai supplies marine engine valves, valve seats and customized diesel engine parts for global shipbuilding, outfitting and repair markets.">
 <meta name="keywords" content="船用发动机气门,船用阀座,柴油机配件,marine engine valves,valve seats,marine diesel engine parts,Zhenjiang Jianhai">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0b2d4a">
@@ -156,8 +156,30 @@
   html[data-lang="en"] #production img { max-height: 420px; object-fit: cover; object-position: center; }
   .about-photo { grid-column:2; grid-row:3 / span 4; margin: 0 0 1.25rem; position:sticky; top:92px; }
   .about-photo img { width: 100%; aspect-ratio: 4 / 3; max-height: 430px; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow-lg); display: block; }
-  .about-highlights { grid-column:1 / -1; display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-top: 1.5rem; }
-  .highlight-item { display:flex; gap:.6rem; align-items:flex-start; font-size:.93rem; color:var(--text); }
+  .about-features {
+    grid-column: 1 / -1;
+    margin-top: 1.5rem;
+    padding: 1.2rem 1.35rem;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius);
+  }
+  .about-features h4 {
+    color: var(--primary);
+    font-size: 1.05rem;
+    margin-bottom: .75rem;
+  }
+  .about-highlights { display: grid; grid-template-columns: 1fr; gap: .65rem; }
+  .highlight-item { display:flex; gap:.6rem; align-items:flex-start; font-size:.95rem; color:var(--text); line-height:1.75; }
+  .highlight-item .dot {
+    width: 7px;
+    height: 7px;
+    min-width: 7px;
+    margin-top: .75em;
+    border-radius: 50%;
+    background: var(--accent);
+  }
   .about-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; margin-top:1.6rem; }
   .stat-card { text-align:center; padding:1.6rem 1rem; background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow); }
   .stat-number { font-size:1.8rem; font-weight:700; color:var(--primary); }
@@ -202,7 +224,14 @@
     position: relative; background: var(--white); border-radius: var(--radius); overflow: visible;
     box-shadow: var(--shadow); transition: transform .3s;
   }
-  .engine-card::before {
+  .eng-preview {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius) var(--radius) 0 0;
+    background: #f0f2f5;
+    cursor: zoom-in;
+  }
+  .eng-preview::before {
     content: ""; position: fixed; left: 50%; top: 50%; z-index: 2000;
     width: min(760px, 86vw); height: min(540px, 74vh); border-radius: var(--radius);
     background: #fff var(--preview-img) center / contain no-repeat;
@@ -210,20 +239,20 @@
     opacity: 0; transform: translate(-50%, -50%) scale(.86);
     pointer-events: none; transition: opacity .2s ease, transform .25s ease;
   }
-  .engine-card::after {
+  .eng-preview::after {
     content: ""; position: fixed; inset: 0; z-index: 1999;
     background: rgba(4,16,28,.48);
     opacity: 0; transform: none;
     pointer-events: none; transition: opacity .2s ease, transform .25s ease;
   }
-  .engine-card:hover, .engine-card:focus-within { z-index: 3000; transform: translateY(-3px); }
-  .engine-card:hover::before, .engine-card:focus-within::before { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  .engine-card:hover::after, .engine-card:focus-within::after { opacity: 1; transform: none; }
+  .engine-card:has(.eng-preview:hover), .engine-card:has(.eng-preview:focus-visible) { z-index: 3000; transform: translateY(-3px); }
+  .eng-preview:hover::before, .eng-preview:focus-visible::before { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  .eng-preview:hover::after, .eng-preview:focus-visible::after { opacity: 1; transform: none; }
   .engine-card .eng-img {
-    width: 100%; height: 160px; object-fit: contain; background: #f0f2f5;
+    width: 100%; height: 160px; object-fit: contain; background: transparent;
     padding: .45rem; display: block; transition: transform .35s ease;
   }
-  .engine-card:hover .eng-img, .engine-card:focus-within .eng-img { transform: scale(1.22); }
+  .eng-preview:hover .eng-img, .eng-preview:focus-visible .eng-img { transform: scale(1.12); }
   .engine-card .eng-body { padding: 1.2rem 1.5rem 1.5rem; }
   .engine-card h4 { font-size: 1.05rem; color: var(--primary); margin-bottom: .5rem; }
   .engine-card .models { font-size: .88rem; color: var(--text-light); line-height: 1.7; word-break: break-all; }
@@ -242,6 +271,16 @@
   .process-step .icon { font-size: 1.6rem; display: block; margin-bottom: .35rem; }
   .process-step .label { font-size: .85rem; }
   .process-arrow { color: var(--accent-light); font-size: 1.3rem; font-weight: 700; }
+  #process img.manufacturing-photo {
+    width: min(100%, 920px);
+    aspect-ratio: 4 / 3;
+    max-height: none;
+    object-fit: contain;
+    object-position: center;
+    background: rgba(255,255,255,.06);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+  }
 
   /* ─── Certifications ─── */
   .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
@@ -287,7 +326,7 @@
     .product-detail, .contact-grid { grid-template-columns:1fr; }
     .about-text { display:block; }
     .about-photo { position:static; margin:1.5rem 0 1.75rem; }
-    .about-highlights { grid-template-columns:repeat(2, 1fr); }
+    .about-highlights { grid-template-columns:1fr; }
     .about-stats { grid-template-columns: repeat(2,1fr); }
     .engine-grid { grid-template-columns: 1fr; }
     .hero-proof { grid-template-columns:1fr; max-width:340px; }
@@ -306,15 +345,15 @@
     .cert-detail .info-row { flex-direction:column; gap:.5rem; }
   }
   @media (hover: none), (max-width: 900px) {
-    .engine-card::before, .engine-card::after { display:none; }
-    .engine-card:hover .eng-img, .engine-card:focus-within .eng-img { transform:none; }
+    .eng-preview::before, .eng-preview::after { display:none; }
+    .eng-preview:hover .eng-img, .eng-preview:focus-visible .eng-img { transform:none; }
   }
   @media (max-width: 600px) {
     html { scroll-padding-top: 72px; }
     .section { padding: 3.5rem 1.25rem; }
     .section-header { margin-bottom: 2.25rem; }
     .about-stats { grid-template-columns: 1fr 1fr; }
-    .about-highlights { grid-template-columns:1fr; }
+    .about-features { padding: 1rem; }
     .spec-table { font-size: .75rem; }
     .spec-table th, .spec-table td { padding: .4rem .5rem; }
     .nav-inner { padding: 0 .75rem; }
@@ -381,7 +420,7 @@
     <div class="hero-proof" aria-label="Company advantages">
       <div class="proof-item"><strong data-i18n="proof_iso_title">ISO 9001</strong><span data-i18n="proof_iso_text">质量管理体系认证</span></div>
       <div class="proof-item"><strong data-i18n="proof_oem_title">OEM/ODM</strong><span data-i18n="proof_oem_text">来图定制与批量供货</span></div>
-      <div class="proof-item"><strong data-i18n="proof_export_title">Export</strong><span data-i18n="proof_export_text">面向全球船舶维修市场</span></div>
+      <div class="proof-item"><strong data-i18n="proof_export_title">Export</strong><span data-i18n="proof_export_text">面向全球船舶配套和维修市场</span></div>
     </div>
   </div>
 </section>
@@ -404,7 +443,7 @@
       </div>
 
       <p class="zh-copy">
-        镇江舰海船舶配件制造有限公司是一家集<strong>研发、生产、销售、服务</strong>于一体的专业船舶制造、水上运输设备零配件销售的制造企业。公司深耕船舶动力发动机领域，依托专业技术团队、精密制造设备、严格质量管控与完善供应链体系，为国内外航运企业、造船厂、船舶维修厂、发动机主机厂提供原厂品质、高性价比的柴油机配件与解决方案。
+        镇江舰海船舶配件有限公司是一家集<strong>研发、生产、销售、服务</strong>于一体的专业船舶制造、水上运输设备零配件销售的制造企业。公司深耕船舶动力发动机领域，依托专业技术团队、精密制造设备、严格质量管控与完善供应链体系，为国内外航运企业、造船厂、船舶维修厂、发动机主机厂提供原厂品质、高性价比的柴油机配件与解决方案。
       </p>
       <p class="en-text alternate-lang">
         Zhenjiang Jianhai Marine Parts Co., Ltd. is a professional shipbuilding and marine transportation equipment parts manufacturing enterprise that integrates <strong>R&D, production, sales, and services</strong>. Specializing in the field of marine power engines, the company leverages its technical team, precision manufacturing equipment, stringent quality control, and well-established supply chain system to provide domestic and international shipping companies, shipyards, marine repair facilities, and engine manufacturers with original-quality, high-value diesel engine parts and solutions.
@@ -424,11 +463,14 @@
         The intake and exhaust valves of marine engines are core components of the diesel engine's valve train, primarily responsible for controlling the four working processes of cylinder <strong>intake → compression → power → exhaust</strong>. They directly affect the engine's power output, fuel efficiency, and reliability. Our products are precision-forged from high-strength heat-resistant alloy, featuring excellent high-temperature strength, oxidation resistance, corrosion resistance, and wear resistance — capable of adapting to various fuel conditions such as heavy oil and light oil, with full interchangeability with Zichai, Weichai, Ningdong, Guangchai, MAN and other mainstream models.
       </p>
 
-      <div class="about-highlights">
-        <div class="highlight-item"><span class="dot"></span><span data-i18n="about_highlight_1">耐高温、耐冲击，适应船舶长期连续运行</span></div>
-        <div class="highlight-item"><span class="dot"></span><span data-i18n="about_highlight_2">密封性能优良，漏气量小，动力损耗低</span></div>
-        <div class="highlight-item"><span class="dot"></span><span data-i18n="about_highlight_3">精度高，装配便捷，使用寿命接近原厂水平</span></div>
-        <div class="highlight-item"><span class="dot"></span><span data-i18n="about_highlight_4">广泛用于渔船、货船、客船、工程船、港口作业船</span></div>
+      <div class="about-features">
+        <h4 data-i18n="about_features_title">产品特点</h4>
+        <div class="about-highlights">
+          <div class="highlight-item"><span class="dot"></span><span data-i18n="about_highlight_1">耐高温、耐冲击，适应船舶长期连续运行</span></div>
+          <div class="highlight-item"><span class="dot"></span><span data-i18n="about_highlight_2">密封性能优良，漏气量小，动力损耗低</span></div>
+          <div class="highlight-item"><span class="dot"></span><span data-i18n="about_highlight_3">精度高，装配便捷，使用寿命接近原厂水平</span></div>
+          <div class="highlight-item"><span class="dot"></span><span data-i18n="about_highlight_4">广泛用于渔船、货船、客船、工程船、港口作业船</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -474,6 +516,14 @@
       </div>
     </div>
 
+    <div class="product-detail">
+      <div class="info">
+        <h4 data-i18n="seat_precision_title">高精度阀座 — 密封可靠，性能卓越</h4>
+        <p data-i18n="seat_precision_desc">产品型号包括 <strong>W型35、W型42、W型50、W型60、W型70、W型80</strong> 等多种规格阀座，多规格可选，满足不同机型需求。</p>
+      </div>
+      <img src="asserts/valve-seat02.jpg" alt="高精度船用发动机阀座" width="1024" height="1792" loading="lazy" decoding="async">
+    </div>
+
     <!-- 阀座原材料 -->
     <table class="spec-table">
       <thead><tr><th colspan="2" data-i18n="seat_raw_title">阀座原材料 · Raw Material for Valve Seat</th></tr></thead>
@@ -485,10 +535,10 @@
     </table>
 
     <table class="spec-table" style="margin-top:1.5rem;">
-      <thead><tr><th colspan="2" data-i18n="seat_harden_title">阀座强化工艺 · Harden Process</th></tr></thead>
+      <thead><tr><th colspan="2" data-i18n="seat_harden_title">阀座强化工艺 · Hardening Process</th></tr></thead>
       <tbody>
         <tr><td data-i18n="process_hfq">高频淬火</td><td>High Frequency Quenching</td></tr>
-        <tr><td data-i18n="process_alloy_welding">银硬质合金堆焊</td><td>High Alloy Welding</td></tr>
+        <tr><td data-i18n="process_alloy_welding">硬质合金堆焊</td><td>Hard Alloy Overlay Welding</td></tr>
         <tr><td data-i18n="process_hvof">超音速喷涂</td><td>HVOF (High Velocity Oxy-Fuel)</td></tr>
       </tbody>
     </table>
@@ -510,10 +560,10 @@
 
     <div class="product-detail">
       <div class="info">
-        <h4 data-i18n="spindle_title">高精度阀杆 — 密封可靠，性能卓越</h4>
-        <p data-i18n="spindle_desc">产品型号包括 <strong>W型35、W型42、W型50、W型60、W型70、W型80</strong> 等多种规格阀杆，多规格可选，满足不同机型需求。</p>
+        <h4 data-i18n="spindle_title">高精度阀杆 — 系列丰富，性能卓越</h4>
+        <p data-i18n="spindle_desc">产品覆盖国内外主流船用发动机品牌，满足不同机型需求。</p>
       </div>
-      <img src="asserts/valve-guide.jpg" alt="高精度船用发动机阀杆" width="1024" height="1792" loading="lazy" decoding="async">
+      <img src="asserts/valve.png" alt="高精度船用发动机阀杆" width="1024" height="1792" loading="lazy" decoding="async">
     </div>
 
     <table class="spec-table">
@@ -527,16 +577,16 @@
     </table>
 
     <table class="spec-table" style="margin-top:1.5rem;">
-      <thead><tr><th colspan="2" data-i18n="surface_harden_title">阀面强化工艺 · Surface Harden Process</th></tr></thead>
+      <thead><tr><th colspan="2" data-i18n="surface_harden_title">阀面强化工艺 · Surface Hardening Process</th></tr></thead>
       <tbody>
         <tr><td data-i18n="process_hfq">高频淬火</td><td>High Frequency Quenching</td></tr>
-        <tr><td data-i18n="hard_alloy_welding">硬质合金堆焊</td><td>High Alloy Welding</td></tr>
-        <tr><td data-i18n="hydraulic_rolling">液压滚压</td><td>Copying Rolling</td></tr>
+        <tr><td data-i18n="hard_alloy_welding">硬质合金堆焊</td><td>Hard Alloy Overlay Welding</td></tr>
+        <tr><td data-i18n="hydraulic_rolling">液压滚压</td><td>Hydraulic Rolling</td></tr>
       </tbody>
     </table>
 
     <table class="spec-table" style="margin-top:1.5rem;">
-      <thead><tr><th colspan="2" data-i18n="stem_harden_title">杆身强化工艺 · Stem Harden Process</th></tr></thead>
+      <thead><tr><th colspan="2" data-i18n="stem_harden_title">杆身强化工艺 · Stem Hardening Process</th></tr></thead>
       <tbody>
         <tr><td data-i18n="chrome_plating">镀铬</td><td>Chrome-plating</td></tr>
         <tr><td data-i18n="nitriding">氮化</td><td>Nitriding</td></tr>
@@ -565,57 +615,73 @@
   </div>
 
   <div class="engine-grid">
-    <div class="engine-card" style="--preview-img:url('asserts/domestic-brands.png');">
-      <img class="eng-img" src="asserts/domestic-brands.png" alt="Zichai Weichai Ningdong Guangchai Shaanxi Diesel" width="900" height="420" loading="lazy" decoding="async">
+    <div class="engine-card">
+      <div class="eng-preview" style="--preview-img:url('asserts/domestic-brands.png');" tabindex="0">
+        <img class="eng-img" src="asserts/domestic-brands.png" alt="Zichai Weichai Ningdong Guangchai Shaanxi Diesel" width="900" height="420" loading="lazy" decoding="async">
+      </div>
       <div class="eng-body">
         <h4 data-i18n="domestic_engine_title">淄柴 / 潍柴 / 宁动 / 广柴 / 陕柴</h4>
         <div class="models" data-i18n="domestic_engine_models">潍坊 170, 6200, 250 | 淄博 170, 210, 250, 8300 | 宁动 G300/320 | 广柴 8320, G32 | 陕柴 PC2-5/2-6</div>
       </div>
     </div>
-    <div class="engine-card" style="--preview-img:url('asserts/manbw.png');">
-      <img class="eng-img" src="asserts/manbw.png" alt="MAN B&W" width="900" height="420" loading="lazy" decoding="async">
+    <div class="engine-card">
+      <div class="eng-preview" style="--preview-img:url('asserts/manbw.png');" tabindex="0">
+        <img class="eng-img" src="asserts/manbw.png" alt="MAN B&W" width="900" height="420" loading="lazy" decoding="async">
+      </div>
       <div class="eng-body">
         <h4>MAN B&W</h4>
         <div class="models">26MC, 35MC, 42MC, 46MC, 50MC, 60MC, 70MC, 80MC, 90MC, 98MC, 40MEB, G/S50MEC, S65MEC, G/S60MEC, G/S70MEC, G/K80MEC, S90MEC, G95MEC</div>
       </div>
     </div>
-    <div class="engine-card" style="--preview-img:url('asserts/man.png');">
-      <img class="eng-img" src="asserts/man.png" alt="MAN medium-speed engines" width="900" height="420" loading="lazy" decoding="async">
+    <div class="engine-card">
+      <div class="eng-preview" style="--preview-img:url('asserts/man.png');" tabindex="0">
+        <img class="eng-img" src="asserts/man.png" alt="MAN medium-speed engines" width="900" height="420" loading="lazy" decoding="async">
+      </div>
       <div class="eng-body">
         <h4>MAN</h4>
         <div class="models">16/24, 23/30, 21/31, 28/32, 27/38, 32/40</div>
       </div>
     </div>
-    <div class="engine-card" style="--preview-img:url('asserts/wartsila.png');">
-      <img class="eng-img" src="asserts/wartsila.png" alt="Wartsila" width="900" height="420" loading="lazy" decoding="async">
+    <div class="engine-card">
+      <div class="eng-preview" style="--preview-img:url('asserts/wartsila.png');" tabindex="0">
+        <img class="eng-img" src="asserts/wartsila.png" alt="Wartsila" width="900" height="420" loading="lazy" decoding="async">
+      </div>
       <div class="eng-body">
         <h4 data-i18n="wartsila_title">Wärtsilä 瓦锡兰</h4>
         <div class="models">RTA48, RTA52, RTA58, RTA62, RTA68, RTA72, Flex48, Flex50, Flex58, Flex82, Flex84, WX72, X52, X62, X72</div>
       </div>
     </div>
-    <div class="engine-card" style="--preview-img:url('asserts/daihatsu.png');">
-      <img class="eng-img" src="asserts/daihatsu.png" alt="Daihatsu" width="900" height="420" loading="lazy" decoding="async">
+    <div class="engine-card">
+      <div class="eng-preview" style="--preview-img:url('asserts/daihatsu.png');" tabindex="0">
+        <img class="eng-img" src="asserts/daihatsu.png" alt="Daihatsu" width="900" height="420" loading="lazy" decoding="async">
+      </div>
       <div class="eng-body">
         <h4 data-i18n="daihatsu_title">Daihatsu 大发</h4>
         <div class="models">DC17, DK20, DE18, DE23, DK26, DK28, DL24, DK32</div>
       </div>
     </div>
-    <div class="engine-card" style="--preview-img:url('asserts/yanmar.png');">
-      <img class="eng-img" src="asserts/yanmar.png" alt="Yanmar" width="900" height="420" loading="lazy" decoding="async">
+    <div class="engine-card">
+      <div class="eng-preview" style="--preview-img:url('asserts/yanmar.png');" tabindex="0">
+        <img class="eng-img" src="asserts/yanmar.png" alt="Yanmar" width="900" height="420" loading="lazy" decoding="async">
+      </div>
       <div class="eng-body">
         <h4 data-i18n="yanmar_title">Yanmar 洋马</h4>
         <div class="models" data-i18n="yanmar_models">S165, S185, M200, N18, EY18, EY22, EY33, N21, N260, N330 等</div>
       </div>
     </div>
-    <div class="engine-card" style="--preview-img:url('asserts/mitsubishi.png');">
-      <img class="eng-img" src="asserts/mitsubishi.png" alt="Mitsubishi" width="900" height="420" loading="lazy" decoding="async">
+    <div class="engine-card">
+      <div class="eng-preview" style="--preview-img:url('asserts/mitsubishi.png');" tabindex="0">
+        <img class="eng-img" src="asserts/mitsubishi.png" alt="Mitsubishi" width="900" height="420" loading="lazy" decoding="async">
+      </div>
       <div class="eng-body">
         <h4 data-i18n="mitsubishi_title">Mitsubishi 三菱</h4>
         <div class="models">UEC33, UEC33LSE, UEC43LSII, UEC50LSII, UEC250LSE, UEC52LA, UEC60LS3, UEC68LSE, UEC85</div>
       </div>
     </div>
-    <div class="engine-card" style="--preview-img:url('asserts/export-valves.jpg');">
-      <img class="eng-img" src="asserts/export-valves.jpg" alt="Export and customized valves" width="1024" height="768" loading="lazy" decoding="async">
+    <div class="engine-card">
+      <div class="eng-preview" style="--preview-img:url('asserts/export-valves.jpg');" tabindex="0">
+        <img class="eng-img" src="asserts/export-valves.jpg" alt="Export and customized valves" width="1024" height="768" loading="lazy" decoding="async">
+      </div>
       <div class="eng-body">
         <h4 data-i18n="export_brand_title">出口品牌 · 定制阀门</h4>
         <div class="models" data-i18n="export_brand_models">Cummins 康明斯 | Caterpillar 卡特彼勒 | SKL 等国际品牌发动机阀门定制</div>
@@ -677,7 +743,7 @@
   </div>
 
   <div style="margin-top:2.5rem; text-align:center;">
-    <img src="asserts/manufacturing.jpg" alt="一站式制造服务流程" width="1024" height="768" style="max-width:100%; max-height:500px; border-radius:var(--radius); box-shadow:var(--shadow-lg);" loading="lazy" decoding="async">
+    <img class="manufacturing-photo" src="asserts/manufacturing.jpg" alt="一站式制造服务流程" width="1024" height="768" loading="lazy" decoding="async">
   </div>
 </section>
 
@@ -747,7 +813,7 @@
       <div class="cert-card">
         <span class="icon">🌐</span>
         <h4 data-i18n="cert_card_4_title">进出口资质</h4>
-        <p data-i18n="cert_card_4_desc">具备完整的进出口经营资质，产品可面向全球船舶制造及维修市场供货</p>
+        <p data-i18n="cert_card_4_desc">具备完整的进出口经营资质，产品可面向全球船舶配套及维修市场供货</p>
       </div>
     </div>
 
@@ -835,304 +901,9 @@
   <span style="display:block; margin-top:.25rem;" data-i18n="footer_line_2">品质为本 · 服务至上 · 诚信合作 · 共赢发展</span>
 </footer>
 
+<script src="i18n.js"></script>
 <script>
-  const i18n = {
-    zh: {
-      title: '镇江舰海船舶配件有限公司 | Marine Engine Valves & Valve Seats',
-      description: '镇江舰海船舶配件有限公司专业生产船用发动机进排气阀、阀座、阀杆，覆盖淄柴、潍柴、MAN B&W、Wartsila、Daihatsu、Mitsubishi等主流机型。',
-      brand_icon: '舰',
-      brand_short: '镇江舰海船舶配件',
-      nav_about: '公司简介',
-      nav_products: '产品中心',
-      nav_engines: '适配机型',
-      nav_process: '制造工艺',
-      nav_certifications: '资质认证',
-      nav_contact: '联系我们',
-      hero_badge: '船用发动机气门 · 阀座专业制造商',
-      hero_title: '镇江舰海船舶配件有限公司',
-      hero_desc: '专注内燃机气门与座圈制造，集研发、生产、销售、服务于一体<br>为国内外航运企业、造船厂、船舶维修厂及发动机主机厂提供高品质柴油机配件',
-      hero_cta_products: '查看产品',
-      hero_cta_contact: '联系我们',
-      proof_iso_title: 'ISO 9001',
-      proof_iso_text: '质量管理体系认证',
-      proof_oem_title: 'OEM/ODM',
-      proof_oem_text: '来图定制与批量供货',
-      proof_export_title: 'Export',
-      proof_export_text: '面向全球船舶维修市场',
-      about_title: '公司简介',
-      about_subtitle: '深耕船舶动力发动机领域，以高品质、快交付、优服务为宗旨',
-      about_company: '镇江舰海船舶配件有限公司',
-      about_highlight_1: '耐高温、耐冲击，适应船舶长期连续运行',
-      about_highlight_2: '密封性能优良，漏气量小，动力损耗低',
-      about_highlight_3: '精度高，装配便捷，使用寿命接近原厂水平',
-      about_highlight_4: '广泛用于渔船、货船、客船、工程船、港口作业船',
-      stat_iso: '质量管理体系认证',
-      stat_brands: '主流发动机品牌覆盖',
-      stat_models: '机型适配型号',
-      stat_stock_title: '现货常备',
-      stat_stock: '规格齐全·发货高效',
-      products_title: '产品中心',
-      products_subtitle: '船用发动机进排气阀是柴油机配气机构的核心部件，直接影响发动机动力性、经济性与可靠性',
-      seat_series: '船用发动机气门阀座系列',
-      seat_title: '高品质阀座 — 源于优质工艺与原材料',
-      seat_desc_1: '公司生产的船用发动机进排气阀座，采用高强度耐热合金精密锻造加工，具备优异的高温强度、抗氧化性、耐腐蚀性与耐磨性，可适应重油、轻油等多种燃料工况。',
-      seat_desc_2: '产品严格按照船用规范及主机厂技术标准生产，与淄柴、潍柴、宁动、广柴、MAN等主流机型完全互换。',
-      seat_raw_title: '阀座原材料 · Raw Material for Valve Seat',
-      material_crmo: 'Cr-Mo 系列高合金结构钢',
-      material_sicr: 'Si-Cr 系列高合金气门钢',
-      material_nicr: 'Ni-Cr 系列粉末合金钢',
-      seat_harden_title: '阀座强化工艺 · Harden Process',
-      process_hfq: '高频淬火',
-      process_alloy_welding: '银硬质合金堆焊',
-      process_hvof: '超音速喷涂',
-      seat_dimensions_title: '阀座尺寸范围 · Dimensions',
-      dim_outer: '外径 Outer Diam',
-      dim_inner: '内径 Inner Diam',
-      dim_height: '高度 Height',
-      customization: '支持定制',
-      custom_desc: '可根据客户需求定制不同尺寸与结构',
-      spindle_series: '船用发动机气门阀杆系列',
-      spindle_title: '高精度阀杆 — 密封可靠，性能卓越',
-      spindle_desc: '产品型号包括 <strong>W型35、W型42、W型50、W型60、W型70、W型80</strong> 等多种规格阀杆，多规格可选，满足不同机型需求。',
-      spindle_raw_title: '阀杆原材料 · Raw Material for Valve Spindle',
-      material_sicr_valve: 'Si-Cr 系列高合金气阀钢',
-      material_nicrmnn: 'Ni-Cr-Mn-N 系列高合金气阀钢',
-      material_nicrw: 'Ni-Cr-W 系列高合金气阀钢',
-      material_ni: 'Ni基耐热合金钢',
-      surface_harden_title: '阀面强化工艺 · Surface Harden Process',
-      hard_alloy_welding: '硬质合金堆焊',
-      hydraulic_rolling: '液压滚压',
-      stem_harden_title: '杆身强化工艺 · Stem Harden Process',
-      chrome_plating: '镀铬',
-      nitriding: '氮化',
-      spindle_dimensions_title: '阀杆尺寸范围 · Valve Dimensions',
-      over_length: '总长 Over Length',
-      valve_disk: '阀盘直径 Valve Disk Diam',
-      stem_diam: '杆身直径 Stem Diam',
-      engines_title: '适配机型',
-      engines_subtitle: '产品覆盖国内外主流船用发动机品牌，满足不同机型需求',
-      domestic_engine_title: '淄柴 / 潍柴 / 宁动 / 广柴 / 陕柴',
-      domestic_engine_models: '潍坊 170, 6200, 250 | 淄博 170, 210, 250, 8300 | 宁动 G300/320 | 广柴 8320, G32 | 陕柴 PC2-5/2-6',
-      wartsila_title: 'Wärtsilä 瓦锡兰',
-      daihatsu_title: 'Daihatsu 大发',
-      yanmar_title: 'Yanmar 洋马',
-      yanmar_models: 'S165, S185, M200, N18, EY18, EY22, EY33, N21, N260, N330 等',
-      mitsubishi_title: 'Mitsubishi 三菱',
-      export_brand_title: '出口品牌 · 定制阀门',
-      export_brand_models: 'Cummins 康明斯 | Caterpillar 卡特彼勒 | SKL 等国际品牌发动机阀门定制',
-      export_brand_desc: '公司具备出口资质，承接国际品牌发动机阀门定制生产与出口业务，支持OEM贴牌合作、来图加工、非标定制、批量订货。规格齐全，现货常备，发货高效。',
-      process_title: '一站式制造服务',
-      process_subtitle: '从原材料到成品交付，精工制造，品质如一，为客户创造更大价值',
-      step_material: '原材料',
-      step_forging: '锻造',
-      step_rough: '粗加工',
-      step_heat: '热处理',
-      step_welding: '堆焊',
-      step_grinding: '精磨加工',
-      step_inspection: '检验',
-      step_packing: '包装',
-      step_delivery: '交付',
-      feature_quality_title: '品质保障',
-      feature_quality_desc: '严格的质量控制体系，确保产品安全可靠',
-      feature_equipment_title: '先进设备',
-      feature_equipment_desc: '引进先进生产设备，保障高精度制造能力',
-      feature_team_title: '专业团队',
-      feature_team_desc: '经验丰富的技术团队，提供专业解决方案',
-      feature_delivery_title: '准时交付',
-      feature_delivery_desc: '高效的生产管理，确保按时满足客户需求',
-      production_title: '生产实力与合作服务',
-      production_subtitle: '标准化生产车间，全套专业加工、热处理、检测设备',
-      capacity_title: '生产能力',
-      capacity_desc: '拥有<strong>标准化生产车间</strong>，配备全套专业加工设备、热处理设备及检测设备。可承接标准件量产、非标定制、来图加工，产能充足，供货稳定。',
-      cooperation_title: '合作服务',
-      cooperation_desc: '支持<strong>批量订货、贴牌合作（OEM）、长期经销合作</strong>等多种合作模式。提供产品参数、安装指导、技术咨询等全方位服务。规格齐全，现货常备，发货高效。',
-      prod_stat_1_title: '标准车间',
-      prod_stat_1_desc: '专业加工设备齐全',
-      prod_stat_2_title: '热处理',
-      prod_stat_2_desc: '先进热处理产线',
-      prod_stat_3_title: '严格检测',
-      prod_stat_3_desc: '全套检测设备保障',
-      prod_stat_4_desc: '贴牌·来图定制',
-      cert_title: '资质认证',
-      cert_subtitle: '产品均通过ISO 9001质量管理体系认证，关键零部件经严格性能测试与疲劳试验',
-      cert_card_1_title: 'ISO 9001:2015 质量管理体系',
-      cert_card_1_desc: '方圆标志认证集团（CQM）颁发，体系覆盖船用内燃发动机气门的生产全过程',
-      cert_card_2_title: '产品性能测试',
-      cert_card_2_desc: '关键零部件经过严格的性能测试与疲劳试验，确保与原厂主机完美匹配',
-      cert_card_3_title: '船用规范标准',
-      cert_card_3_desc: '产品严格按照船用规范及主机厂技术标准生产，满足船舶长期连续运行需求',
-      cert_card_4_title: '进出口资质',
-      cert_card_4_desc: '具备完整的进出口经营资质，产品可面向全球船舶制造及维修市场供货',
-      cert_detail_title: 'ISO 9001:2015 质量管理体系认证证书',
-      cert_org: '<strong>认证单位：</strong>方圆标志认证集团（CQM）',
-      cert_no: '<strong>证书编号：</strong>00226Q02891R001',
-      cert_reg: '<strong>注册号：</strong>CN-00226Q02891R001',
-      cert_date: '<strong>生效日期：</strong>2026年05月22日',
-      cert_scope: '<strong>认证范围：</strong>船用内燃发动机气门的生产',
-      cert_address: '<strong>认证地址：</strong>江苏省句容市开发区佛泽产业园A3标5号厂房、B2栋',
-      contact_title: '联系我们',
-      contact_subtitle: '欢迎来电来函咨询，我们将竭诚为您服务',
-      contact_address_title: '公司地址',
-      contact_address: '江苏省句容市开发区佛泽产业园A3标5号厂房、B2栋',
-      contact_phone_title: '联系电话（微信同号）',
-      contact_credit_title: '统一社会信用代码',
-      contact_business_title: '业务范围',
-      contact_business: '船用内燃发动机气门的生产 · 船舶配件批发零售 · 来图定制加工 · OEM贴牌合作 · 出口贸易',
-      contact_wechat_title: '微信 / WeChat',
-      contact_wechat_desc: '微信同联系电话，支持中文和英文询盘。',
-      footer_line_1: '船用发动机气门 · 阀座专业制造商 &copy; 2026',
-      footer_line_2: '品质为本 · 服务至上 · 诚信合作 · 共赢发展',
-      footer_company: '镇江舰海船舶配件有限公司'
-    },
-    en: {
-      title: 'Zhenjiang Jianhai Marine Parts | Marine Engine Valves & Valve Seats',
-      description: 'Zhenjiang Jianhai supplies marine engine valves, valve seats, valve spindles and customized diesel engine parts for global shipyards, ship owners and repair companies.',
-      brand_icon: 'JH',
-      brand_short: 'Jianhai Marine Parts',
-      nav_about: 'About',
-      nav_products: 'Products',
-      nav_engines: 'Engine Models',
-      nav_process: 'Manufacturing',
-      nav_certifications: 'Certifications',
-      nav_contact: 'Contact',
-      hero_badge: 'Marine engine valves and valve seats manufacturer',
-      hero_title: 'Marine Engine Valves & Valve Seats',
-      hero_desc: 'R&D, manufacturing, sales and service for diesel engine valves and seat rings. <br>Supplying reliable marine diesel parts to shipyards, ship owners, repair companies and engine makers worldwide',
-      hero_cta_products: 'View Products',
-      hero_cta_contact: 'Contact Sales',
-      proof_iso_title: 'ISO 9001',
-      proof_iso_text: 'Certified quality management',
-      proof_oem_title: 'OEM/ODM',
-      proof_oem_text: 'Drawing-based customization and batch supply',
-      proof_export_title: 'Export',
-      proof_export_text: 'Serving the global marine repair market',
-      about_title: 'About Us',
-      about_subtitle: 'Focused on marine power engines with quality, fast delivery and responsive service',
-      about_company: 'Zhenjiang Jianhai Marine Parts Co., Ltd.',
-      about_highlight_1: 'Heat-resistant and impact-resistant for continuous vessel operation',
-      about_highlight_2: 'Excellent sealing, low leakage and reduced power loss',
-      about_highlight_3: 'High precision, easy assembly and service life close to OEM standards',
-      about_highlight_4: 'Used on fishing boats, cargo ships, passenger ships, workboats and port vessels',
-      stat_iso: 'Quality management certification',
-      stat_brands: 'Mainstream engine brands covered',
-      stat_models: 'Compatible engine models',
-      stat_stock_title: 'Ready Stock',
-      stat_stock: 'Complete specs · efficient dispatch',
-      products_title: 'Products',
-      products_subtitle: 'Intake and exhaust valves are core components of diesel engine valve trains, affecting power, economy and reliability',
-      seat_series: 'Marine Engine Valve Seat Series',
-      seat_title: 'High-quality valve seats from proven materials and processes',
-      seat_desc_1: 'Our marine engine intake and exhaust valve seats are precision-forged from high-strength heat-resistant alloy, with excellent high-temperature strength, oxidation resistance, corrosion resistance and wear resistance.',
-      seat_desc_2: 'Products are manufactured to marine standards and engine maker requirements, with interchangeability for Zichai, Weichai, Ningdong, Guangchai, MAN and other mainstream models.',
-      seat_raw_title: 'Raw Material for Valve Seat',
-      material_crmo: 'Cr-Mo high-alloy structural steel',
-      material_sicr: 'Si-Cr high-alloy valve steel',
-      material_nicr: 'Ni-Cr powder alloy steel',
-      seat_harden_title: 'Valve Seat Hardening Process',
-      process_hfq: 'High Frequency Quenching',
-      process_alloy_welding: 'High Alloy Welding',
-      process_hvof: 'HVOF',
-      seat_dimensions_title: 'Valve Seat Dimensions',
-      dim_outer: 'Outer Diameter',
-      dim_inner: 'Inner Diameter',
-      dim_height: 'Height',
-      customization: 'Customization',
-      custom_desc: 'Custom dimensions and structures are available according to customer requirements',
-      spindle_series: 'Marine Engine Valve Spindle Series',
-      spindle_title: 'High-precision valve spindles with reliable sealing',
-      spindle_desc: 'Available models include <strong>W35, W42, W50, W60, W70 and W80</strong>, with multiple specifications for different engine requirements.',
-      spindle_raw_title: 'Raw Material for Valve Spindle',
-      material_sicr_valve: 'Si-Cr high-alloy valve steel',
-      material_nicrmnn: 'Ni-Cr-Mn-N high-alloy valve steel',
-      material_nicrw: 'Ni-Cr-W high-alloy valve steel',
-      material_ni: 'Ni-based heat-resistant alloy steel',
-      surface_harden_title: 'Valve Face Surface Hardening Process',
-      hard_alloy_welding: 'High Alloy Welding',
-      hydraulic_rolling: 'Copying Rolling',
-      stem_harden_title: 'Stem Hardening Process',
-      chrome_plating: 'Chrome-plating',
-      nitriding: 'Nitriding',
-      spindle_dimensions_title: 'Valve Spindle Dimensions',
-      over_length: 'Overall Length',
-      valve_disk: 'Valve Disk Diameter',
-      stem_diam: 'Stem Diameter',
-      engines_title: 'Compatible Engine Models',
-      engines_subtitle: 'Coverage for mainstream domestic and international marine engine brands',
-      domestic_engine_title: 'Zichai / Weichai / Ningdong / Guangchai / Shaanxi Diesel',
-      domestic_engine_models: 'Weifang 170, 6200, 250 | Zibo 170, 210, 250, 8300 | Ningdong G300/320 | Guangchai 8320, G32 | Shaanxi Diesel PC2-5/2-6',
-      wartsila_title: 'Wartsila',
-      daihatsu_title: 'Daihatsu',
-      yanmar_title: 'Yanmar',
-      yanmar_models: 'S165, S185, M200, N18, EY18, EY22, EY33, N21, N260, N330',
-      mitsubishi_title: 'Mitsubishi',
-      export_brand_title: 'Export Brands · Custom Valves',
-      export_brand_models: 'Custom valves for Cummins, Caterpillar, SKL and other international engine brands',
-      export_brand_desc: 'With export capability, we support customized production and export of international-brand engine valves, including OEM branding, drawing-based processing, non-standard customization and batch orders.',
-      process_title: 'One-stop Manufacturing Service',
-      process_subtitle: 'From raw material to finished product delivery, controlled manufacturing creates consistent quality',
-      step_material: 'Material',
-      step_forging: 'Forging',
-      step_rough: 'Rough Machining',
-      step_heat: 'Heat Treatment',
-      step_welding: 'Welding',
-      step_grinding: 'Finish Grinding',
-      step_inspection: 'Inspection',
-      step_packing: 'Packing',
-      step_delivery: 'Delivery',
-      feature_quality_title: 'Quality Assurance',
-      feature_quality_desc: 'Strict quality control for safe and reliable products',
-      feature_equipment_title: 'Advanced Equipment',
-      feature_equipment_desc: 'Modern production equipment supports high-precision manufacturing',
-      feature_team_title: 'Technical Team',
-      feature_team_desc: 'Experienced engineers provide practical technical support',
-      feature_delivery_title: 'On-time Delivery',
-      feature_delivery_desc: 'Efficient production management helps meet delivery schedules',
-      production_title: 'Production Strength & Cooperation',
-      production_subtitle: 'Standardized workshop with machining, heat treatment and inspection equipment',
-      capacity_title: 'Production Capacity',
-      capacity_desc: 'Our <strong>standardized workshop</strong> is equipped with machining, heat treatment and inspection equipment. We support standard part mass production, non-standard customization and drawing-based processing with stable supply.',
-      cooperation_title: 'Cooperation Service',
-      cooperation_desc: 'We support <strong>batch orders, OEM branding and long-term distribution cooperation</strong>, and provide product parameters, installation guidance and technical consultation.',
-      prod_stat_1_title: 'Workshop',
-      prod_stat_1_desc: 'Complete machining equipment',
-      prod_stat_2_title: 'Heat Treatment',
-      prod_stat_2_desc: 'Advanced heat treatment line',
-      prod_stat_3_title: 'Inspection',
-      prod_stat_3_desc: 'Testing equipment and process control',
-      prod_stat_4_desc: 'OEM · drawing-based customization',
-      cert_title: 'Certifications',
-      cert_subtitle: 'ISO 9001 certified quality system with performance and fatigue testing for key parts',
-      cert_card_1_title: 'ISO 9001:2015 Quality Management',
-      cert_card_1_desc: 'Issued by CQM, covering the production process of marine internal combustion engine valves',
-      cert_card_2_title: 'Product Performance Testing',
-      cert_card_2_desc: 'Key components are tested for performance and fatigue to support OEM-level compatibility',
-      cert_card_3_title: 'Marine Standards',
-      cert_card_3_desc: 'Manufactured according to marine specifications and engine maker technical standards',
-      cert_card_4_title: 'Import & Export Qualification',
-      cert_card_4_desc: 'Products can be supplied to global shipbuilding and marine repair markets',
-      cert_detail_title: 'ISO 9001:2015 Quality Management Certificate',
-      cert_org: '<strong>Certification body:</strong> China Quality Mark Certification Group (CQM)',
-      cert_no: '<strong>Certificate No.:</strong> 00226Q02891R001',
-      cert_reg: '<strong>Registration No.:</strong> CN-00226Q02891R001',
-      cert_date: '<strong>Effective date:</strong> May 22, 2026',
-      cert_scope: '<strong>Scope:</strong> Production of marine internal combustion engine valves',
-      cert_address: '<strong>Certified address:</strong> Plant A3-5 and Building B2, Foze Industrial Park, Jurong Development Zone, Jiangsu, China',
-      contact_title: 'Contact Us',
-      contact_subtitle: 'Send your model, drawing or part number and we will respond with product support',
-      contact_address_title: 'Address',
-      contact_address: 'Plant A3-5 and Building B2, Foze Industrial Park, Jurong Development Zone, Jiangsu, China',
-      contact_phone_title: 'Phone / WeChat',
-      contact_credit_title: 'Unified Social Credit Code',
-      contact_business_title: 'Business Scope',
-      contact_business: 'Marine engine valve production · marine parts wholesale and retail · drawing-based customization · OEM cooperation · export trade',
-      contact_wechat_title: 'WeChat',
-      contact_wechat_desc: 'WeChat is the same as the phone numbers. Chinese and English inquiries are supported.',
-      footer_line_1: 'Marine Engine Valves · Valve Seats Manufacturer &copy; 2026',
-      footer_line_2: 'Quality First · Service Driven · Reliable Cooperation',
-      footer_company: 'Zhenjiang Jianhai Marine Parts Co., Ltd.'
-    }
-  };
-
+  const i18n = window.JIANHAI_I18N || {};
   const metaDescription = document.querySelector('meta[name="description"]');
 
   function getRequestedLanguage() {
