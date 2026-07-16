@@ -50,6 +50,7 @@ export const getLanguageUrl = (language) => `${SITE_URL}${getLanguagePath(langua
 
 export const createStructuredData = (language) => {
   const seo = getSeoData(language);
+  const dictionary = messages[seo.language];
   const organizationId = `${SITE_URL}/#organization`;
   const websiteId = `${SITE_URL}/#website`;
 
@@ -94,6 +95,19 @@ export const createStructuredData = (language) => {
         inLanguage: seo.htmlLang,
         isPartOf: { '@id': websiteId },
         about: { '@id': organizationId },
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${getLanguageUrl(seo.language)}#faq`,
+        inLanguage: seo.htmlLang,
+        mainEntity: [1, 2, 3, 4, 5, 6].map((number) => ({
+          '@type': 'Question',
+          name: dictionary[`faq_q${number}`],
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: dictionary[`faq_a${number}`],
+          },
+        })),
       },
     ],
   };

@@ -27,12 +27,12 @@ const spindleTables = computed(() => [
     <div class="product-category">
       <h3><span class="num">1</span> {{ tr('seat_series') }}</h3>
       <div class="product-detail">
-        <img :src="assets.valveSeat" :srcset="`${assets.valveSeatCompact} 600w, ${assets.valveSeatSmall} 720w, ${assets.valveSeat} 1200w`" sizes="(max-width: 900px) calc(100vw - 40px), 576px" alt="High-quality marine engine valve seat" width="1200" height="1629" loading="lazy" decoding="async">
+        <img :src="assets.valveSeat" :srcset="`${assets.valveSeatCompact} 600w, ${assets.valveSeatSmall} 720w, ${assets.valveSeat} 1200w`" sizes="(max-width: 900px) calc(100vw - 40px), 576px" :alt="tr('alt_valve_seat')" width="1200" height="1629" loading="lazy" decoding="async">
         <div class="info"><h4>{{ tr('seat_title') }}</h4><p>{{ tr('seat_desc_1') }}</p><p>{{ tr('seat_desc_2') }}</p></div>
       </div>
       <div class="product-detail">
         <div class="info"><h4>{{ tr('seat_precision_title') }}</h4><p v-html="tr('seat_precision_desc')"></p></div>
-        <img :src="assets.valveSeatDetail" :srcset="`${assets.valveSeatDetailCompact} 600w, ${assets.valveSeatDetailSmall} 720w, ${assets.valveSeatDetail} 1200w`" sizes="(max-width: 900px) calc(100vw - 40px), 576px" alt="Precision marine engine valve seat" width="1200" height="1629" loading="lazy" decoding="async">
+        <img :src="assets.valveSeatDetail" :srcset="`${assets.valveSeatDetailCompact} 600w, ${assets.valveSeatDetailSmall} 720w, ${assets.valveSeatDetail} 1200w`" sizes="(max-width: 900px) calc(100vw - 40px), 576px" :alt="tr('alt_valve_seat_detail')" width="1200" height="1629" loading="lazy" decoding="async">
       </div>
       <table v-for="(table, index) in seatTables" :key="table.title" class="spec-table" :style="index ? { marginTop: '1.5rem' } : undefined">
         <caption>{{ tr(table.title) }}</caption>
@@ -44,7 +44,7 @@ const spindleTables = computed(() => [
       <h3><span class="num">2</span> {{ tr('spindle_series') }}</h3>
       <div class="product-detail">
         <div class="info"><h4>{{ tr('spindle_title') }}</h4><p>{{ tr('spindle_desc') }}</p></div>
-        <img :src="assets.valve" alt="Precision marine engine valve spindle" width="893" height="1212" loading="lazy" decoding="async">
+        <img :src="assets.valve" :alt="tr('alt_valve_spindle')" width="893" height="1212" loading="lazy" decoding="async">
       </div>
       <table v-for="(table, index) in spindleTables" :key="table.title" class="spec-table" :style="index ? { marginTop: '1.5rem' } : undefined">
         <caption>{{ tr(table.title) }}</caption>
