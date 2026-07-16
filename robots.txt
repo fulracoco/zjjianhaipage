@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zhenhaiwebpage.pages.dev/sitemap.xml
+Sitemap: https://www.fengfengfeng.com/sitemap.xml
