@@ -27,10 +27,6 @@ const productionStats = [
   ['prod_stat_1_title', 'prod_stat_1_desc'], ['prod_stat_2_title', 'prod_stat_2_desc'], ['prod_stat_3_title', 'prod_stat_3_desc'], ['OEM/ODM', 'prod_stat_4_desc']
 ];
 
-function setLanguage(nextLanguage) {
-  language.value = nextLanguage;
-}
-
 onMounted(() => {
   if (window.location.hash) {
     window.setTimeout(() => document.querySelector(window.location.hash)?.scrollIntoView({ block: 'start', behavior: 'auto' }), 50);
@@ -39,7 +35,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <SiteHeader :language="language" :t="t" @change-language="setLanguage" />
+  <SiteHeader :language="language" :t="t" />
 
   <main>
     <section class="hero" :style="{ backgroundImage: `url(${assets.background})` }">

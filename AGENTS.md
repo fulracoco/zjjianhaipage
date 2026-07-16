@@ -45,7 +45,14 @@ Use Node.js 20.19+ or 22.12+ for Vite 7 compatibility. There is currently no lin
 - When debugging reveals an in-scope defect, apply and verify the fix directly unless the user explicitly requested diagnosis or review only.
 - Make reasonable, repository-aligned assumptions for unspecified implementation details and carry the task through editing, verification, and completion.
 - Do not pause to ask whether to proceed, and do not ask for approval before routine local operations such as reading files, editing source, running builds, starting local development services, or performing non-destructive checks.
+- Execute repository-scoped file discovery and inspection directly. This includes `rg`, `rg --files`, `Get-Content`, directory listings, and non-mutating Git commands such as `git status`, `git diff`, `git log`, and `git show`.
+- Execute routine verification directly. This includes package scripts, builds, local development or preview servers, HTTP checks against localhost, headless browser runs, screenshots, and reading browser console output.
+- Prefer headless Playwright or headless Chrome with an isolated profile under the workspace or system temporary directory. Do not launch a visible desktop browser unless the task specifically requires interactive browser control.
+- Batch independent reads and checks when practical so the task completes with fewer tool round trips. Keep searches scoped to the repository and exclude generated directories such as `node_modules/`, `dist/`, and `.vite/` unless they are directly relevant.
+- Tool approval prompts are a platform security mechanism, not a reason to ask the user the same question in chat. Attempt authorized routine work directly; if the sandbox rejects it, use the narrowest available scoped escalation once and continue without a separate confirmation message.
+- If a command remains unavailable, use an equivalent repository-scoped tool or report the specific verification gap in the final handoff. Do not repeatedly retry a blocked command or ask the user to run routine commands on the agent's behalf.
 - Ask a question only when essential information cannot be discovered locally and making an assumption would create a material risk of data loss, an irreversible external side effect, or a result that clearly diverges from the request.
+- Require explicit user approval for destructive operations, writes outside the repository, credential or secret access, publishing or deployment, external account changes, or other irreversible side effects not already requested.
 - Preserve unrelated user changes in a dirty worktree and work with overlapping edits rather than reverting them.
 
 ## Code Style and Scope

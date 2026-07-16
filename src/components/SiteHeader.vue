@@ -1,12 +1,12 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from 'vue';
+import { getLanguagePath } from '../seoConfig.js';
 
 defineProps({
   language: { type: String, required: true },
   t: { type: Function, required: true }
 });
 
-const emit = defineEmits(['change-language']);
 const menuOpen = ref(false);
 const scrolled = ref(false);
 const languageOptions = [
@@ -46,16 +46,15 @@ onBeforeUnmount(() => window.removeEventListener('scroll', updateScrollState));
           </li>
         </ul>
         <div class="lang-switch" aria-label="Language switch">
-          <button
+          <a
             v-for="[code, label, name] in languageOptions"
             :key="code"
-            type="button"
+            :href="getLanguagePath(code)"
             :class="{ active: language === code }"
             :aria-label="name"
-            :aria-pressed="language === code"
+            :aria-current="language === code ? 'page' : undefined"
             :title="name"
-            @click="emit('change-language', code)"
-          >{{ label }}</button>
+          >{{ label }}</a>
         </div>
         <button class="nav-toggle" type="button" :aria-label="menuOpen ? 'Close menu' : 'Open menu'" :aria-expanded="menuOpen" @click="menuOpen = !menuOpen">☰</button>
       </div>

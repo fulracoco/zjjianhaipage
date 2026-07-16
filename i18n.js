@@ -1,7 +1,7 @@
 const messages = {
     zh: {
-      title: '镇江舰海船舶配件有限公司 | Marine Engine Valves & Valve Seats',
-      description: '镇江舰海船舶配件有限公司专业生产船用发动机进排气阀、阀座、阀杆，覆盖淄柴、潍柴、MAN B&W、Wartsila、Daihatsu、Mitsubishi等主流机型。',
+      title: '船用发动机气门与阀座厂家 | 镇江舰海船舶配件',
+      description: '镇江舰海船舶配件专业生产船用发动机进排气阀、阀座和阀杆，支持MAN B&W、Wärtsilä、Daihatsu、Mitsubishi及国内主流柴油机型，提供OEM与来图定制。',
       brand_icon: '舰',
       brand_short: '镇江舰海船舶配件',
       nav_about: '公司简介',
@@ -153,8 +153,8 @@ const messages = {
       footer_company: '镇江舰海船舶配件有限公司'
     },
     en: {
-      title: 'Zhenjiang Jianhai Marine Parts | Marine Engine Valves & Valve Seats',
-      description: 'Zhenjiang Jianhai supplies marine engine valves, valve seats, valve spindles and customized diesel engine parts for global shipbuilding, outfitting and repair markets.',
+      title: 'Marine Engine Valves & Valve Seats | Jianhai Marine Parts',
+      description: 'Manufacturer of marine engine intake and exhaust valves, valve seats and valve spindles for MAN B&W, Wärtsilä, Daihatsu, Mitsubishi and Chinese diesel engines. OEM and drawing-based production available.',
       brand_icon: 'JH',
       brand_short: 'Jianhai Marine Parts',
       nav_about: 'About',
@@ -306,8 +306,8 @@ const messages = {
       footer_company: 'Zhenjiang Jianhai Marine Parts Co., Ltd.'
     },
     ja: {
-      title: '鎮江艦海船舶部品有限公司 | 船舶用エンジンバルブ・バルブシート',
-      description: '鎮江艦海は、船舶用エンジンの吸排気バルブ、バルブシート、バルブスピンドルおよびカスタムディーゼルエンジン部品を世界の造船・修理市場へ供給しています。',
+      title: '船舶用エンジンバルブ・バルブシート | 鎮江艦海',
+      description: '鎮江艦海は船舶用エンジンの吸排気バルブ、バルブシート、バルブスピンドルを製造。MAN B&W、Wärtsilä、Daihatsu、Mitsubishiなどに対応し、OEM・図面加工も承ります。',
       brand_icon: '艦',
       brand_short: '鎮江艦海船舶部品',
       nav_about: '会社案内',
@@ -459,8 +459,8 @@ const messages = {
       footer_company: '鎮江艦海船舶部品有限公司'
     },
     ko: {
-      title: '전장 젠하이 선박부품 유한회사 | 선박 엔진 밸브·밸브 시트',
-      description: '전장 젠하이는 선박 엔진 흡배기 밸브, 밸브 시트, 밸브 스핀들 및 맞춤형 디젤 엔진 부품을 세계 조선·수리 시장에 공급합니다.',
+      title: '선박 엔진 밸브·밸브 시트 제조업체 | 전장 젠하이',
+      description: '전장 젠하이는 MAN B&W, Wärtsilä, Daihatsu, Mitsubishi 및 중국 디젤 엔진용 흡배기 밸브, 밸브 시트와 밸브 스핀들을 생산하며 OEM·도면 맞춤 제작을 지원합니다.',
       brand_icon: '艦',
       brand_short: '젠하이 선박부품',
       nav_about: '회사 소개',

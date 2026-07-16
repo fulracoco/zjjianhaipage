@@ -1,9 +1,11 @@
 import { computed, ref, watch } from 'vue';
 import messages from '../../i18n.js';
+import { SUPPORTED_LANGUAGES, normalizeLanguage } from '../seoConfig.js';
+import { updateSeoMetadata } from '../seo.js';
 
 const storageKey = 'jianhai_language';
-const supportedLanguages = ['zh', 'en', 'ja', 'ko'];
 const requestedLanguage = new URLSearchParams(window.location.search).get('lang');
+const pathLanguage = window.location.pathname.split('/').filter(Boolean)[0];
 const storedLanguage = (() => {
   try {
     return window.localStorage.getItem(storageKey);
@@ -14,21 +16,17 @@ const storedLanguage = (() => {
 
 const browserLanguage = window.navigator.languages?.[0] ?? window.navigator.language ?? '';
 const browserLanguageCode = browserLanguage.toLowerCase().split(/[-_]/)[0];
-const detectedLanguage = supportedLanguages.includes(browserLanguageCode) ? browserLanguageCode : 'en';
+const detectedLanguage = SUPPORTED_LANGUAGES.includes(browserLanguageCode) ? browserLanguageCode : 'en';
 
-const initialLanguage = supportedLanguages.includes(requestedLanguage)
+const initialLanguage = SUPPORTED_LANGUAGES.includes(requestedLanguage)
   ? requestedLanguage
-  : supportedLanguages.includes(storedLanguage) ? storedLanguage : detectedLanguage;
+  : SUPPORTED_LANGUAGES.includes(pathLanguage) ? pathLanguage
+    : SUPPORTED_LANGUAGES.includes(storedLanguage) ? storedLanguage : detectedLanguage;
 
 const language = ref(initialLanguage);
 
 function updateDocument(languageCode) {
-  const dictionary = messages[languageCode] ?? messages.zh;
-  const documentLanguages = { zh: 'zh-CN', en: 'en', ja: 'ja', ko: 'ko' };
-  document.documentElement.lang = documentLanguages[languageCode] ?? 'en';
-  document.documentElement.dataset.lang = languageCode;
-  document.title = dictionary.title;
-  document.querySelector('meta[name="description"]')?.setAttribute('content', dictionary.description);
+  updateSeoMetadata(normalizeLanguage(languageCode));
 }
 
 watch(language, (languageCode) => {

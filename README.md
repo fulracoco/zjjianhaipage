@@ -80,10 +80,13 @@ npm run preview
 
 语言选择逻辑位于 `src/composables/useSiteI18n.js`：
 
+- `/zh/`、`/en/`、`/ja/` 和 `/ko/` 是可供搜索引擎直接索引的静态语言入口
 - `?lang=zh`、`?lang=en`、`?lang=ja` 或 `?lang=ko` 优先指定当前语言
 - 用户选择保存在 `localStorage` 的 `jianhai_language` 键中
 - 首次访问且没有已保存选择时，根据浏览器首选语言选择中文、日文或韩文，其他语言默认使用英文
-- 切换语言时同步更新页面 `lang`、`data-lang`、标题和描述
+- 切换语言时同步更新页面 `lang`、`data-lang`、标题、描述、规范链接和社交分享元数据
+
+生产构建会为四种语言生成独立 HTML，并在页面和 `sitemap.xml` 中输出相互对应的 `hreflang`。SEO 配置、结构化数据和生产域名集中在 `src/seoConfig.js`。
 
 图片统一在 `src/data/assets.js` 中注册，再由组件引用。请勿直接修改构建生成的带哈希资源路径。
 
