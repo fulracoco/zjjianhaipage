@@ -56,7 +56,7 @@ onMounted(() => {
       <SectionHeading label="About Us" :title="t('about_title')" :subtitle="t('about_subtitle')" />
       <div class="about-grid"><div class="about-text">
         <h3>{{ t('about_company') }}</h3><p class="en-title">Zhenjiang Jianhai Marine Parts Co., Ltd.</p>
-        <div class="about-photo"><img :src="assets.factory" alt="Zhenjiang Jianhai Marine Parts factory" width="893" height="385" loading="lazy" decoding="async"></div>
+        <div class="about-photo"><img :src="assets.factory" :srcset="`${assets.factoryCompact} 600w, ${assets.factorySmall} 720w, ${assets.factory} 893w`" sizes="(max-width: 900px) calc(100vw - 40px), 548px" alt="Zhenjiang Jianhai Marine Parts factory" width="893" height="385" loading="lazy" decoding="async"></div>
         <p v-for="paragraph in aboutParagraphs" :key="paragraph" v-html="t(paragraph)"></p>
         <div class="about-features"><h4>{{ t('about_features_title') }}</h4><div class="about-highlights"><div v-for="highlight in highlights" :key="highlight" class="highlight-item"><span class="dot"></span><span>{{ t(highlight) }}</span></div></div></div>
       </div></div>
@@ -69,25 +69,25 @@ onMounted(() => {
     <section id="process" class="section bg-dark">
       <SectionHeading label="Manufacturing" :title="t('process_title')" :subtitle="t('process_subtitle')" />
       <div class="process-flow"><template v-for="([icon, label], index) in processSteps" :key="label"><div class="process-step"><span class="icon">{{ icon }}</span><span class="label">{{ t(label) }}</span></div><span v-if="index < processSteps.length - 1" class="process-arrow">→</span></template></div>
-      <div class="process-features"><div v-for="[icon, title, description] in processFeatures" :key="title"><div class="feature-icon">{{ icon }}</div><h4>{{ t(title) }}</h4><p>{{ t(description) }}</p></div></div>
+      <div class="process-features"><div v-for="[icon, title, description] in processFeatures" :key="title"><div class="feature-icon">{{ icon }}</div><h3>{{ t(title) }}</h3><p>{{ t(description) }}</p></div></div>
       <div class="manufacturing-image"><img class="manufacturing-photo" :src="assets.manufacturing" alt="Marine parts manufacturing process" width="1200" height="1629" loading="lazy" decoding="async"></div>
     </section>
 
     <section id="production" class="section bg-white">
       <SectionHeading label="Production" :title="t('production_title')" :subtitle="t('production_subtitle')" />
-      <div class="product-detail"><img :src="assets.workshop" alt="Standardized production workshop" width="893" height="1212" loading="lazy" decoding="async"><div class="info"><h4>{{ t('capacity_title') }}</h4><p v-html="t('capacity_desc')"></p><h4 class="cooperation-heading">{{ t('cooperation_title') }}</h4><p v-html="t('cooperation_desc')"></p></div></div>
+      <div class="product-detail"><img :src="assets.workshop" alt="Standardized production workshop" width="893" height="1212" loading="lazy" decoding="async"><div class="info"><h3>{{ t('capacity_title') }}</h3><p v-html="t('capacity_desc')"></p><h3 class="cooperation-heading">{{ t('cooperation_title') }}</h3><p v-html="t('cooperation_desc')"></p></div></div>
       <div class="about-stats"><div v-for="[number, label] in productionStats" :key="label" class="stat-card"><div class="stat-number">{{ number.startsWith('prod_') ? t(number) : number }}</div><div class="stat-label">{{ t(label) }}</div></div></div>
     </section>
 
     <section id="certifications" class="bg-dark"><div class="section">
       <SectionHeading label="Certifications" :title="t('cert_title')" :subtitle="t('cert_subtitle')" />
-      <div class="cert-grid"><article v-for="[icon, title, description] in certificationCards" :key="title" class="cert-card"><span class="icon">{{ icon }}</span><h4>{{ t(title) }}</h4><p>{{ t(description) }}</p></article></div>
-      <div class="cert-detail"><h4>{{ t('cert_detail_title') }}</h4><div class="info-row"><span v-html="t('cert_org')"></span><span v-html="t('cert_no')"></span></div><div class="info-row cert-info-row"><span v-html="t('cert_reg')"></span><span v-html="t('cert_date')"></span></div><div class="cert-extra" v-html="t('cert_scope')"></div><div class="cert-extra" v-html="t('cert_address')"></div><div class="cert-image"><img :src="assets.certificate" alt="ISO 9001 certificate" width="893" height="613" loading="lazy" decoding="async"></div></div>
+      <div class="cert-grid"><article v-for="[icon, title, description] in certificationCards" :key="title" class="cert-card"><span class="icon">{{ icon }}</span><h3>{{ t(title) }}</h3><p>{{ t(description) }}</p></article></div>
+      <div class="cert-detail"><h3>{{ t('cert_detail_title') }}</h3><div class="info-row"><span v-html="t('cert_org')"></span><span v-html="t('cert_no')"></span></div><div class="info-row cert-info-row"><span v-html="t('cert_reg')"></span><span v-html="t('cert_date')"></span></div><div class="cert-extra" v-html="t('cert_scope')"></div><div class="cert-extra" v-html="t('cert_address')"></div><div class="cert-image"><img :src="assets.certificate" alt="ISO 9001 certificate" width="893" height="613" loading="lazy" decoding="async"></div></div>
     </div></section>
 
     <section id="contact" class="section bg-white">
       <SectionHeading label="Contact" :title="t('contact_title')" :subtitle="t('contact_subtitle')" />
-      <div class="contact-grid"><div><article class="contact-card"><div class="c-icon">📍</div><div><h4>{{ t('contact_address_title') }}</h4><p>{{ t('contact_address') }}</p></div></article><article class="contact-card contact-highlight"><div class="c-icon phone-icon">📞</div><div><h4>{{ t('contact_phone_title') }}</h4><p>+86 139 5201 1890</p><p>+86 139 5179 0128</p><p>+86 138 5194 3971</p></div></article></div><div><article class="contact-card"><div class="c-icon">🏢</div><div><h4>{{ t('contact_credit_title') }}</h4><p>91321183MAE6BSNY6R</p></div></article><article class="contact-card contact-gap"><div class="c-icon">🏭</div><div><h4>{{ t('contact_business_title') }}</h4><p>{{ t('contact_business') }}</p></div></article><article class="contact-card contact-gap"><div class="c-icon">💬</div><div><h4>{{ t('contact_wechat_title') }}</h4><p>{{ t('contact_wechat_desc') }}</p></div></article></div></div>
+      <div class="contact-grid"><div><article class="contact-card"><div class="c-icon">📍</div><div><h3>{{ t('contact_address_title') }}</h3><p>{{ t('contact_address') }}</p></div></article><article class="contact-card contact-highlight"><div class="c-icon phone-icon">📞</div><div><h3>{{ t('contact_phone_title') }}</h3><p>+86 139 5201 1890</p><p>+86 139 5179 0128</p><p>+86 138 5194 3971</p></div></article></div><div><article class="contact-card"><div class="c-icon">🏢</div><div><h3>{{ t('contact_credit_title') }}</h3><p>91321183MAE6BSNY6R</p></div></article><article class="contact-card contact-gap"><div class="c-icon">🏭</div><div><h3>{{ t('contact_business_title') }}</h3><p>{{ t('contact_business') }}</p></div></article><article class="contact-card contact-gap"><div class="c-icon">💬</div><div><h3>{{ t('contact_wechat_title') }}</h3><p>{{ t('contact_wechat_desc') }}</p></div></article></div></div>
     </section>
   </main>
 

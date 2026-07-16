@@ -27,15 +27,15 @@ const spindleTables = computed(() => [
     <div class="product-category">
       <h3><span class="num">1</span> {{ tr('seat_series') }}</h3>
       <div class="product-detail">
-        <img :src="assets.valveSeat" alt="High-quality marine engine valve seat" width="1200" height="1629" loading="lazy" decoding="async">
+        <img :src="assets.valveSeat" :srcset="`${assets.valveSeatCompact} 600w, ${assets.valveSeatSmall} 720w, ${assets.valveSeat} 1200w`" sizes="(max-width: 900px) calc(100vw - 40px), 576px" alt="High-quality marine engine valve seat" width="1200" height="1629" loading="lazy" decoding="async">
         <div class="info"><h4>{{ tr('seat_title') }}</h4><p>{{ tr('seat_desc_1') }}</p><p>{{ tr('seat_desc_2') }}</p></div>
       </div>
       <div class="product-detail">
         <div class="info"><h4>{{ tr('seat_precision_title') }}</h4><p v-html="tr('seat_precision_desc')"></p></div>
-        <img :src="assets.valveSeatDetail" alt="Precision marine engine valve seat" width="1200" height="1629" loading="lazy" decoding="async">
+        <img :src="assets.valveSeatDetail" :srcset="`${assets.valveSeatDetailCompact} 600w, ${assets.valveSeatDetailSmall} 720w, ${assets.valveSeatDetail} 1200w`" sizes="(max-width: 900px) calc(100vw - 40px), 576px" alt="Precision marine engine valve seat" width="1200" height="1629" loading="lazy" decoding="async">
       </div>
       <table v-for="(table, index) in seatTables" :key="table.title" class="spec-table" :style="index ? { marginTop: '1.5rem' } : undefined">
-        <thead><tr><th colspan="2">{{ tr(table.title) }}</th></tr></thead>
+        <caption>{{ tr(table.title) }}</caption>
         <tbody><tr v-for="row in table.rows" :key="row[0]"><td>{{ tr(row[0]) }}</td><td>{{ row[1].includes('_') ? tr(row[1]) : row[1] }}</td></tr></tbody>
       </table>
     </div>
@@ -47,7 +47,7 @@ const spindleTables = computed(() => [
         <img :src="assets.valve" alt="Precision marine engine valve spindle" width="893" height="1212" loading="lazy" decoding="async">
       </div>
       <table v-for="(table, index) in spindleTables" :key="table.title" class="spec-table" :style="index ? { marginTop: '1.5rem' } : undefined">
-        <thead><tr><th colspan="2">{{ tr(table.title) }}</th></tr></thead>
+        <caption>{{ tr(table.title) }}</caption>
         <tbody><tr v-for="row in table.rows" :key="row[0]"><td>{{ tr(row[0]) }}</td><td>{{ row[1].includes('_') ? tr(row[1]) : row[1] }}</td></tr></tbody>
       </table>
     </div>

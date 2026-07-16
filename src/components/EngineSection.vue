@@ -25,7 +25,7 @@ const engines = computed(() => [
         <div class="eng-preview" :style="{ '--preview-img': `url(${engine.image})` }" tabindex="0">
           <img class="eng-img" :src="engine.image" :alt="engine.alt" :width="engine.width" :height="engine.height" loading="lazy" decoding="async">
         </div>
-        <div class="eng-body"><h4>{{ engine.title }}</h4><div class="models">{{ engine.models }}</div><p v-if="engine.description" class="engine-description">{{ engine.description }}</p></div>
+        <div class="eng-body"><h3>{{ engine.title }}</h3><div class="models">{{ engine.models }}</div><p v-if="engine.description" class="engine-description">{{ engine.description }}</p></div>
       </article>
     </div>
   </section>

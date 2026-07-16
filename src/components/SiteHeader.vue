@@ -35,8 +35,8 @@ onBeforeUnmount(() => window.removeEventListener('scroll', updateScrollState));
 <template>
   <nav class="nav" :class="{ scrolled }" aria-label="Main navigation">
     <div class="nav-inner">
-      <a href="#" class="nav-logo" aria-label="Zhenjiang Jianhai Marine Parts">
-        <span class="icon">{{ t('brand_icon') }}</span>
+      <a href="#" class="nav-logo">
+        <span class="icon" aria-hidden="true">{{ t('brand_icon') }}</span>
         <span class="text">{{ t('brand_short') }}</span>
       </a>
       <div class="nav-actions">
