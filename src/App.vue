@@ -70,19 +70,19 @@ onMounted(() => {
       <SectionHeading label="Manufacturing" :title="t('process_title')" :subtitle="t('process_subtitle')" />
       <div class="process-flow"><template v-for="([icon, label], index) in processSteps" :key="label"><div class="process-step"><span class="icon">{{ icon }}</span><span class="label">{{ t(label) }}</span></div><span v-if="index < processSteps.length - 1" class="process-arrow">→</span></template></div>
       <div class="process-features"><div v-for="[icon, title, description] in processFeatures" :key="title"><div class="feature-icon">{{ icon }}</div><h4>{{ t(title) }}</h4><p>{{ t(description) }}</p></div></div>
-      <div class="manufacturing-image"><img class="manufacturing-photo" :src="assets.manufacturing" alt="Marine parts manufacturing process" width="1024" height="768" loading="lazy" decoding="async"></div>
+      <div class="manufacturing-image"><img class="manufacturing-photo" :src="assets.manufacturing" alt="Marine parts manufacturing process" width="1200" height="1629" loading="lazy" decoding="async"></div>
     </section>
 
     <section id="production" class="section bg-white">
       <SectionHeading label="Production" :title="t('production_title')" :subtitle="t('production_subtitle')" />
-      <div class="product-detail"><img :src="assets.workshop" alt="Standardized production workshop" width="900" height="420" loading="lazy" decoding="async"><div class="info"><h4>{{ t('capacity_title') }}</h4><p v-html="t('capacity_desc')"></p><h4 class="cooperation-heading">{{ t('cooperation_title') }}</h4><p v-html="t('cooperation_desc')"></p></div></div>
+      <div class="product-detail"><img :src="assets.workshop" alt="Standardized production workshop" width="893" height="1212" loading="lazy" decoding="async"><div class="info"><h4>{{ t('capacity_title') }}</h4><p v-html="t('capacity_desc')"></p><h4 class="cooperation-heading">{{ t('cooperation_title') }}</h4><p v-html="t('cooperation_desc')"></p></div></div>
       <div class="about-stats"><div v-for="[number, label] in productionStats" :key="label" class="stat-card"><div class="stat-number">{{ number.startsWith('prod_') ? t(number) : number }}</div><div class="stat-label">{{ t(label) }}</div></div></div>
     </section>
 
     <section id="certifications" class="bg-dark"><div class="section">
       <SectionHeading label="Certifications" :title="t('cert_title')" :subtitle="t('cert_subtitle')" />
       <div class="cert-grid"><article v-for="[icon, title, description] in certificationCards" :key="title" class="cert-card"><span class="icon">{{ icon }}</span><h4>{{ t(title) }}</h4><p>{{ t(description) }}</p></article></div>
-      <div class="cert-detail"><h4>{{ t('cert_detail_title') }}</h4><div class="info-row"><span v-html="t('cert_org')"></span><span v-html="t('cert_no')"></span></div><div class="info-row cert-info-row"><span v-html="t('cert_reg')"></span><span v-html="t('cert_date')"></span></div><div class="cert-extra" v-html="t('cert_scope')"></div><div class="cert-extra" v-html="t('cert_address')"></div><div class="cert-image"><img :src="assets.certificate" alt="ISO 9001 certificate" width="900" height="420" loading="lazy" decoding="async"></div></div>
+      <div class="cert-detail"><h4>{{ t('cert_detail_title') }}</h4><div class="info-row"><span v-html="t('cert_org')"></span><span v-html="t('cert_no')"></span></div><div class="info-row cert-info-row"><span v-html="t('cert_reg')"></span><span v-html="t('cert_date')"></span></div><div class="cert-extra" v-html="t('cert_scope')"></div><div class="cert-extra" v-html="t('cert_address')"></div><div class="cert-image"><img :src="assets.certificate" alt="ISO 9001 certificate" width="893" height="613" loading="lazy" decoding="async"></div></div>
     </div></section>
 
     <section id="contact" class="section bg-white">

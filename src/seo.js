@@ -39,7 +39,7 @@ const ensureLink = (selector, attributes) => {
 export function updateSeoMetadata(language) {
   const seo = getSeoData(language);
   const canonicalUrl = getLanguageUrl(seo.language);
-  const socialImage = `${SITE_URL}/assets/jianhai-marine-parts.png`;
+  const socialImage = `${SITE_URL}/assets/jianhai-marine-parts.jpg`;
 
   document.documentElement.lang = seo.htmlLang;
   document.documentElement.dataset.lang = seo.language;
@@ -73,7 +73,7 @@ export function updateSeoMetadata(language) {
   ensureMeta('meta[property="og:url"]', { property: 'og:url', content: canonicalUrl });
   ensureMeta('meta[property="og:locale"]', { property: 'og:locale', content: seo.locale });
   ensureMeta('meta[property="og:image"]', { property: 'og:image', content: socialImage });
-  ensureMeta('meta[property="og:image:type"]', { property: 'og:image:type', content: 'image/png' });
+  ensureMeta('meta[property="og:image:type"]', { property: 'og:image:type', content: 'image/jpeg' });
   ensureMeta('meta[property="og:image:width"]', { property: 'og:image:width', content: '893' });
   ensureMeta('meta[property="og:image:height"]', { property: 'og:image:height', content: '385' });
   ensureMeta('meta[property="og:image:alt"]', { property: 'og:image:alt', content: seo.title });

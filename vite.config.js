@@ -26,7 +26,7 @@ const replaceMeta = (html, attribute, key, content) => html.replace(
 const renderLocalizedHtml = (source, language) => {
   const seo = getSeoData(language);
   const canonicalUrl = getLanguageUrl(language);
-  const socialImage = `${SITE_URL}/assets/jianhai-marine-parts.png`;
+  const socialImage = `${SITE_URL}/assets/jianhai-marine-parts.jpg`;
   const alternateLocales = SUPPORTED_LANGUAGES
     .filter((code) => code !== language)
     .map((code) => `    <meta property="og:locale:alternate" content="${getSeoData(code).locale}">`)
@@ -76,8 +76,8 @@ const localizedSeoPages = {
   generateBundle() {
     this.emitFile({
       type: 'asset',
-      fileName: 'assets/jianhai-marine-parts.png',
-      source: readFileSync('assets/factory.png'),
+      fileName: 'assets/jianhai-marine-parts.jpg',
+      source: readFileSync('assets/optimized/social-share.jpg'),
     });
   },
   closeBundle() {

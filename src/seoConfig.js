@@ -62,7 +62,7 @@ export const createStructuredData = (language) => {
         name: seo.companyName,
         alternateName: 'Zhenjiang Jianhai Marine Parts Co., Ltd.',
         url: getLanguageUrl(seo.language),
-        image: `${SITE_URL}/assets/jianhai-marine-parts.png`,
+        image: `${SITE_URL}/assets/jianhai-marine-parts.jpg`,
         telephone: ['+86 139 5201 1890', '+86 139 5179 0128', '+86 138 5194 3971'],
         address: {
           '@type': 'PostalAddress',
