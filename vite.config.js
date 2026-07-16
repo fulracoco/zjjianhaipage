@@ -10,6 +10,8 @@ import {
   getSeoData,
 } from './src/seoConfig.js';
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 const deploymentFiles = ['_headers', '_redirects', '404.html', 'robots.txt', 'sitemap.xml'];
 
 const escapeHtml = (value) => String(value)
@@ -96,5 +98,5 @@ const localizedSeoPages = {
 };
 
 export default defineConfig({
-  plugins: [vue(), copyDeploymentFiles, localizedSeoPages]
+  plugins: [vue(), copyDeploymentFiles, localizedSeoPages, cloudflare()]
 });
