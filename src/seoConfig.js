@@ -12,7 +12,7 @@ const languageDetails = {
   en: {
     htmlLang: 'en',
     locale: 'en_US',
-    keywords: 'marine engine valves,valve seats,valve spindles,marine diesel engine parts,MAN B&W valves,Wartsila valves,Jianhai Marine Parts',
+    keywords: 'marine engine valves,marine valves,valve seats,valve spindles,marine diesel engine parts,MAN B&W valves,Wartsila valves,Jianhai Marine Parts',
   },
   ja: {
     htmlLang: 'ja',
