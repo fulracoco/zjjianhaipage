@@ -7,7 +7,7 @@ import SectionHeading from './components/SectionHeading.vue';
 import ProductSection from './components/ProductSection.vue';
 import EngineSection from './components/EngineSection.vue';
 
-const { language, t } = useSiteI18n();
+const { language, setLanguage, t } = useSiteI18n();
 
 const highlights = ['about_highlight_1', 'about_highlight_2', 'about_highlight_3', 'about_highlight_4'];
 const aboutParagraphs = ['about_body_1', 'about_body_2', 'about_body_3'];
@@ -36,7 +36,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <SiteHeader :language="language" :t="t" />
+  <SiteHeader :language="language" :t="t" :on-language-change="setLanguage" />
 
   <main>
     <section class="hero" :style="{ backgroundImage: `url(${assets.background})` }">

@@ -1,7 +1,7 @@
 import messages from '../i18n.js';
 
 export const SITE_URL = 'https://www.fengfengfeng.com';
-export const SUPPORTED_LANGUAGES = ['zh', 'en', 'ja', 'ko'];
+export const SUPPORTED_LANGUAGES = ['zh', 'en', 'de', 'fr', 'ja', 'ko'];
 
 const languageDetails = {
   zh: {
@@ -13,6 +13,16 @@ const languageDetails = {
     htmlLang: 'en',
     locale: 'en_US',
     keywords: 'marine engine valves,marine valves,valve seats,valve spindles,marine diesel engine parts,MAN B&W valves,Wartsila valves,Jianhai Marine Parts',
+  },
+  de: {
+    htmlLang: 'de',
+    locale: 'de_DE',
+    keywords: 'Schiffsmotorventile,Schiffsventile,Ventilsitze,Ventilspindeln,Schiffsdieselmotor-Ersatzteile,MAN B&W Ventile,Wärtsilä Ventile,Jianhai Schiffsteile',
+  },
+  fr: {
+    htmlLang: 'fr',
+    locale: 'fr_FR',
+    keywords: 'soupapes moteur marin,soupapes marines,sièges de soupape,tiges de soupape,pièces moteur diesel marin,soupapes MAN B&W,soupapes Wärtsilä,Jianhai Marine Parts',
   },
   ja: {
     htmlLang: 'ja',
