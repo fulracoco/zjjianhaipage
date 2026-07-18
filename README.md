@@ -97,6 +97,12 @@ Cloudflare Pages 推荐配置：
 - Build command：`npm run build`
 - Build output directory：`dist`
 
+Cloudflare Workers Builds 推荐配置：
+
+- Build command：`npm run build`
+- Deploy command：`npx wrangler versions upload`
+- 静态资源目录由 `wrangler.jsonc` 配置为 `dist`
+
 部署前请确认 `_headers`、`_redirects`、`robots.txt` 和 `sitemap.xml` 中的域名、缓存及安全策略仍符合生产环境要求。
 
 ## 验证清单
