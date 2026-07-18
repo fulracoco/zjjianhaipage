@@ -9,6 +9,7 @@ import {
   getLanguageUrl,
   getSeoData,
 } from './src/seoConfig.js';
+import messages from './i18n.js';
 
 const deploymentFiles = ['_headers', '_redirects', '404.html', 'robots.txt', 'sitemap.xml'];
 
@@ -17,6 +18,92 @@ const escapeHtml = (value) => String(value)
   .replaceAll('"', '&quot;')
   .replaceAll('<', '&lt;')
   .replaceAll('>', '&gt;');
+
+const plainText = (value) => String(value)
+  .replace(/<br\s*\/?\s*>/gi, ' ')
+  .replace(/<[^>]*>/g, '')
+  .replace(/\s+/g, ' ')
+  .trim();
+
+const renderSeoFallback = (language) => {
+  const dictionary = messages[language] ?? messages.en;
+  const text = (key) => escapeHtml(plainText(dictionary[key] ?? ''));
+  const faqItems = [1, 2, 3, 4, 5, 6]
+    .map((number) => `
+        <details>
+          <summary>${text(`faq_q${number}`)}</summary>
+          <p>${text(`faq_a${number}`)}</p>
+        </details>`)
+    .join('');
+
+  return `<!--seo-fallback:start-->
+    <main class="seo-fallback">
+      <section class="hero">
+        <div class="hero-content">
+          <div class="hero-badge">${text('hero_badge')}</div>
+          <h1>${text('hero_title')}<span class="en">Zhenjiang Jianhai Marine Parts Co., Ltd.</span></h1>
+          <p class="hero-desc">${text('hero_desc')}</p>
+        </div>
+      </section>
+      <section class="section bg-white">
+        <div class="section-header">
+          <h2 class="section-title">${text('about_title')}</h2>
+          <p class="section-subtitle">${text('about_subtitle')}</p>
+        </div>
+        <div class="seo-fallback-copy">
+          <p>${text('about_body_1')}</p>
+          <p>${text('about_body_2')}</p>
+          <p>${text('about_body_3')}</p>
+        </div>
+      </section>
+      <section class="section bg-white">
+        <div class="section-header">
+          <h2 class="section-title">${text('products_title')}</h2>
+          <p class="section-subtitle">${text('products_subtitle')}</p>
+        </div>
+        <div class="seo-fallback-grid">
+          <article><h3>${text('seat_series')}</h3><p>${text('seat_desc_1')}</p><p>${text('seat_desc_2')}</p></article>
+          <article><h3>${text('spindle_series')}</h3><p>${text('spindle_desc')}</p><p>${text('export_brand_desc')}</p></article>
+        </div>
+      </section>
+      <section class="section bg-white">
+        <div class="section-header">
+          <h2 class="section-title">${text('engines_title')}</h2>
+          <p class="section-subtitle">${text('engines_subtitle')}</p>
+        </div>
+        <p class="seo-fallback-brands">${text('domestic_engine_title')} · MAN B&amp;W · MAN · ${text('wartsila_title')} · ${text('daihatsu_title')} · ${text('yanmar_title')} · ${text('mitsubishi_title')}</p>
+      </section>
+      <section class="section bg-white">
+        <div class="section-header">
+          <h2 class="section-title">${text('cert_title')}</h2>
+          <p class="section-subtitle">${text('cert_subtitle')}</p>
+        </div>
+      </section>
+      <section class="section bg-white">
+        <div class="section-header">
+          <h2 class="section-title">${text('faq_title')}</h2>
+          <p class="section-subtitle">${text('faq_subtitle')}</p>
+        </div>
+        <div class="faq-list">${faqItems}
+        </div>
+      </section>
+      <section class="section bg-white">
+        <div class="section-header">
+          <h2 class="section-title">${text('contact_title')}</h2>
+          <p class="section-subtitle">${text('contact_subtitle')}</p>
+        </div>
+        <div class="seo-fallback-copy">
+          <h3>${text('contact_address_title')}</h3>
+          <p>${text('contact_address')}</p>
+          <h3>${text('contact_phone_title')}</h3>
+          <p>+86 139 5201 1890 · +86 139 5179 0128 · +86 138 5194 3971</p>
+          <h3>${text('contact_business_title')}</h3>
+          <p>${text('contact_business')}</p>
+        </div>
+      </section>
+    </main>
+    <!--seo-fallback:end-->`;
+};
 
 const replaceMeta = (html, attribute, key, content) => html.replace(
   new RegExp(`<meta\\s+[^>]*${attribute}="${key.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')}"[^>]*>`, 'i'),
@@ -37,6 +124,7 @@ const renderLocalizedHtml = (source, language) => {
     .replace(/<html lang="[^"]*" data-lang="[^"]*">/i, `<html lang="${seo.htmlLang}" data-lang="${language}">`)
     .replace(/<title>[^<]*<\/title>/i, `<title>${escapeHtml(seo.title)}</title>`)
     .replace(/<link rel="canonical" href="[^"]*">/i, `<link rel="canonical" href="${canonicalUrl}">`)
+    .replace(/<!--seo-fallback:start-->[\s\S]*?<!--seo-fallback:end-->/i, renderSeoFallback(language))
     .replace(/<script type="application\/ld\+json" id="organization-schema">[\s\S]*?<\/script>/i, `<script type="application/ld+json" id="organization-schema">${schema}</script>`);
 
   html = replaceMeta(html, 'name', 'description', seo.description);

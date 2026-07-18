@@ -120,6 +120,15 @@
   .section-title::after { content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:50px; height:3px; background:var(--accent); border-radius:2px; }
   .section-subtitle { color: var(--text-light); max-width: 650px; margin: .8rem auto 0; font-size: .98rem; }
 
+  .seo-fallback-copy { max-width: 900px; margin: 0 auto; }
+  .seo-fallback-copy h3 { color: var(--primary); margin: 1.25rem 0 .35rem; }
+  .seo-fallback-copy p { color: var(--text-light); margin-bottom: .9rem; line-height: 1.9; }
+  .seo-fallback-grid { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:1.25rem; max-width:1000px; margin:0 auto; }
+  .seo-fallback-grid article { padding:1.4rem; border:1px solid var(--border); border-radius:var(--radius); background:var(--white); box-shadow:var(--shadow); }
+  .seo-fallback-grid h3 { color:var(--primary); margin-bottom:.7rem; }
+  .seo-fallback-grid p { color:var(--text-light); margin-top:.6rem; }
+  .seo-fallback-brands { max-width:900px; margin:0 auto; color:var(--text); text-align:center; line-height:2; }
+
   .bg-white { background: var(--white); }
   .bg-dark { background: linear-gradient(160deg, #0b2d4a 0%, #051828 100%); color: var(--white); }
   .bg-dark .section-title { color: var(--white); }
@@ -352,6 +361,7 @@
   @media (max-width: 600px) {
     html { scroll-padding-top: 72px; }
     .section { padding: 3.5rem 1.25rem; }
+    .seo-fallback-grid { grid-template-columns:1fr; }
     .section-header { margin-bottom: 2.25rem; }
     .about-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .stat-card { min-width:0; }
